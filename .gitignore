@@ -1,0 +1,10 @@
+/node_modules
+.DS_Store
+dist
+/lib
+dist-ssr
+*.local
+format.*
+pnpm-lock.yaml
+lib
+npm-debug.log
