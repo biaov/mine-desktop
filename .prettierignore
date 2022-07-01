@@ -1,0 +1,16 @@
+# 目录
+*.git/
+*.husky/
+dist/
+lib/
+node_modules/
+fonts
+
+# 文件
+.editorconfig
+.eslintignore
+.npmignore
+.prettierignore
+.prettierrc
+LICENSE
+package-lock.json

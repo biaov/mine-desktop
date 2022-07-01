@@ -1,0 +1,36 @@
+{
+  "appId": "mine.desktop.app",
+  "electronVersion": "19.0.4",
+  "copyright": "Copyright (c) 2022-present biaov",
+  "asar": true,
+  "directories": {
+    "output": "./dist/package"
+  },
+  "win": {
+    "icon": "./app/assets/256x256.ico",
+    "requestedExecutionLevel": "highestAvailable",
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      }
+    ]
+  },
+  "nsis": {
+    "allowElevation": true,
+    "allowToChangeInstallationDirectory": true,
+    "artifactName": "mine-desktop.${ext}",
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "installerIcon": "./app/assets/256x256.ico",
+    "uninstallerIcon": "./app/assets/256x256.ico",
+    "installerHeaderIcon": "./app/assets/256x256.ico",
+    "uninstallDisplayName": "uninstall",
+    "oneClick": false,
+    "shortcutName": "mine-desktop",
+    "useZip": true,
+    "deleteAppDataOnUninstall": false,
+    "displayLanguageSelector": false,
+    "perMachine": true
+  }
+}

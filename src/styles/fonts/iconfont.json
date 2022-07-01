@@ -1,0 +1,65 @@
+{
+  "id": "3462573",
+  "name": "mine-desktop",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "关于 mine-desktop 项目的图标",
+  "glyphs": [
+    {
+      "icon_id": "769422",
+      "name": "已取消",
+      "font_class": "shouye",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "12548766",
+      "name": "定时",
+      "font_class": "dingshi-",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "13614079",
+      "name": "重启",
+      "font_class": "zhongqi",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "26160460",
+      "name": "显示器",
+      "font_class": "JC_011",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "7596177",
+      "name": "Quit",
+      "font_class": "Quit",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "29925",
+      "name": "close",
+      "font_class": "close",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "15838514",
+      "name": "minus",
+      "font_class": "minus",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    },
+    {
+      "icon_id": "18360994",
+      "name": "maximize",
+      "font_class": "maximize",
+      "unicode": "e76f",
+      "unicode_decimal": 59247
+    }
+  ]
+}

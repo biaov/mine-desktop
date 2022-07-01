@@ -1,0 +1,15 @@
+.cur-icon {
+  @type: {
+    primary: @color-primary;
+    success: @color-success;
+    info: @color-info;
+    warning: @color-warning;
+    danger: @color-danger;
+  };
+
+  each(@type, {
+    &.@{key} {
+      color: @value  !important;
+    }
+  });
+}
