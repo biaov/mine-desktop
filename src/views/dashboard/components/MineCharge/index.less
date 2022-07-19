@@ -1,0 +1,126 @@
+@plugin "charge.js";
+@color: #4de1ff;
+@width: 300px;
+@height: 400px;
+
+.number {
+  position: absolute;
+  width: @width;
+  top: 27%;
+  text-align: center;
+  font-size: 20px;
+  z-index: 10;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: kaiti;
+}
+
+.container {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  width: @width;
+  height: @height;
+
+  .contrast {
+    filter: contrast(10) hue-rotate(0);
+    width: @width;
+    height: @height;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    animation: hueRotate 10s infinite linear;
+
+    .circle {
+      position: relative;
+      width: @width;
+      height: 300px;
+      box-sizing: border-box;
+      filter: blur(8px);
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(0);
+        width: 200px;
+        height: 200px;
+        background-color: @color;
+        border-radius: 42% 38% 62% 49% / 45%;
+        animation: rotate 10s infinite linear;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 176px;
+        height: 176px;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background-color: @color;
+        z-index: 10;
+      }
+    }
+
+    .bubbles {
+      @height: 12px;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 100px;
+      height: @height;
+      transform: translate(-50%, 0);
+      border-radius: @height / 2 @height / 2 0 0;
+      background-color: @color;
+      filter: blur(5px);
+
+      li {
+        position: absolute;
+        border-radius: 50%;
+        background: @color;
+
+        each(range(15), .(@v) {
+            &:nth-child(@{v}) {
+              @random: random();
+              @width: @random*15 + 15px;
+              left: @random*70 + 15px;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              width: @width;
+              height: @width;
+              animation: moveToTop @random*6 + 3s ease-in-out -@random*5s infinite;
+            }
+          });
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  50% {
+    border-radius: 45% / 42% 38% 58% 49%;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(720deg);
+  }
+}
+
+@keyframes moveToTop {
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.1;
+    transform: translate(-50%, -180px);
+  }
+}
+
+@keyframes hueRotate {
+  100% {
+    filter: contrast(15) hue-rotate(360deg);
+  }
+}

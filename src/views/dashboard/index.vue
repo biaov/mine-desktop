@@ -2,9 +2,18 @@
 @import './index.less';
 </style>
 <template>
-  <!--  -->
-  <div class="">首页</div>
+  <!-- 首页 -->
+  <div class="dashboard">
+    <a-skeleton :loading="loading" active>
+      <mine-charge></mine-charge>
+    </a-skeleton>
+  </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
+import MineCharge from './components/MineCharge'
+const loading = ref(true)
+setTimeout(() => {
+  loading.value = false
+}, 1000)
 </script>

@@ -16,6 +16,7 @@ export const config: UserConfig = {
     // 配置预编译器
     preprocessorOptions: {
       less: {
+        javascriptEnabled: true,
         additionalData: `@import '@/styles/variables.less';`
       }
     }

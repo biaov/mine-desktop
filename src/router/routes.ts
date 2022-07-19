@@ -37,7 +37,7 @@ const addComponents = (list: RouteItem[], parentPath?: string) => {
     if (item.children) {
       item.component = templateComponent
       addComponents(item.children, item.path)
-    } else {
+    } else if (!item.component) {
       const path = (parentPath ? `${parentPath}/` : '') + item.path
       item.component = modules[`../views/${path}/index.vue`]
     }
