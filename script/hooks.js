@@ -1,4 +1,4 @@
-const { writeFileSync, existsSync, unlinkSync } = require('fs')
+const { writeFileSync } = require('fs')
 const { resolve } = require('path')
 const package = require('../package.json')
 

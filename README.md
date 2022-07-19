@@ -20,7 +20,7 @@ npm i
 ## 运行项目
 
 ```Basic
-npm run dev:app
+npm start
 ```
 
 ## 打包项目
@@ -37,8 +37,3 @@ npm run build
 ## 贡献者
 
 - [x] biaov\<biaov@qq.com\>
-
-## License
-
-- [x] [MIT](https://github.com/biaov/mine-desktop/blob/master/LICENSE)
-- [x] Copyright (c) 2022-present biaov
