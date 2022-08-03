@@ -7,9 +7,8 @@
     <div class="contrast">
       <div class="circle"></div>
       <ul class="bubbles">
-        <li v-for="item in 15"></li>
+        <li v-for="item in 15" :key="item"></li>
       </ul>
     </div>
   </div>
 </template>
-<script lang="ts" setup></script>

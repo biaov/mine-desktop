@@ -44,11 +44,14 @@
       <a-descriptions-item label="版权">Copyright (c) 2022-present biaov</a-descriptions-item>
     </a-descriptions>
   </a-drawer>
+  <a-modal v-model:visible="modal.visible" v-bind="{ title: modal.title, cancelText: modal.cancelText, okButtonProps: modal.okButtonProps, okText: modal.okText }" @ok="handleOk">
+    <p v-if="modal.content">{{ modal.content }}</p>
+  </a-modal>
 </template>
 <script lang="ts" setup>
 import { useContextmenu, useMenu, useResize, useMove } from './hooks'
 
-const { aboutDrawer, menuList, onMenuItem, onMenuChildItem, onClearAll, onHideDropdown } = useMenu()
+const { aboutDrawer, menuList, modal, onMenuItem, onMenuChildItem, onClearAll, onHideDropdown, handleOk } = useMenu()
 const { dropdownList, dropdownConfig, onDropdownItem, onContextmenu } = useContextmenu({ menuList, onClearAll, onHideDropdown })
 const { resizeList } = useResize()
 const { onMousedown } = useMove()

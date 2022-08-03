@@ -12,6 +12,12 @@ export interface CurIpcMain extends IpcMain {
 }
 
 // useActions return
-export interface useActionsReturn {
+export interface UseActionsReturn {
   [key: string]: any
+}
+
+// aboutAction Return
+export interface AboutActionReturn {
+  name: string
+  version: string
 }

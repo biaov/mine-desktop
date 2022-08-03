@@ -44,3 +44,20 @@ export interface PackageJson {
   name: string
   version: string
 }
+
+// okButtonProps
+export interface OkButtonProps {
+  type: string
+  danger?: boolean
+}
+
+// modal
+export interface Modal {
+  visible: boolean
+  title: string
+  cancelText: string
+  type: string
+  okButtonProps: OkButtonProps
+  okText: string
+  content: string
+}

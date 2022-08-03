@@ -4,7 +4,6 @@ import vue from '@vitejs/plugin-vue'
 
 export const config: UserConfig = {
   base: './',
-  // root: __dirname,
   plugins: [vue()],
   resolve: {
     // 路径别名
@@ -31,8 +30,7 @@ export const config: UserConfig = {
     rollupOptions: {
       output: {
         manualChunks: {
-          'ant-design-vue': ['ant-design-vue'],
-          'ant-design-vue-icon': ['@ant-design/icons-vue']
+          'ant-design-vue': ['ant-design-vue', '@ant-design/icons-vue']
         }
       }
     },

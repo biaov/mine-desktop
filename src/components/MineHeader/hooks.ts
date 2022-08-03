@@ -1,8 +1,8 @@
-import { ref, onMounted } from 'vue'
-import { message } from 'ant-design-vue'
+import { ref, reactive, onMounted } from 'vue'
 import { useRenderer } from '@/composables/useBridge'
-import { ListItem, ShareData, DropdownConfig, ContextmenuReturn, MoveReturn, PackageJson } from './interfaces'
+import { ListItem, ShareData, DropdownConfig, ContextmenuReturn, MoveReturn, PackageJson, Modal } from './interfaces'
 import { CallBackFn, ClearAllFn } from './types'
+import { newVersionApi } from '@/api/public'
 
 /**
  * 鼠标右击
@@ -102,6 +102,15 @@ export const useMenu = () => {
   let callBack: CallBackFn
   let onClearAll: ClearAllFn
   const aboutDrawer = ref({ visible: false, name: '', version: '' })
+  const modal = reactive<Modal>({
+    visible: false,
+    title: '提示',
+    type: '',
+    cancelText: '',
+    okButtonProps: { type: 'primary' },
+    okText: '',
+    content: ''
+  })
   const menuList = ref<ListItem[]>([
     {
       label: '作品集',
@@ -170,8 +179,20 @@ export const useMenu = () => {
           value: 'checkUpdate',
           shortcut: 'Ctrl + U',
           action() {
-            message.info('暂未开放')
-            // ipcRenderer.invoke(this.value) // 渲染进程
+            Promise.all([ipcRenderer.invoke(this.value), newVersionApi()]).then(([localVersion, { version }]: [string, any]) => {
+              modal.visible = true
+              if (localVersion === version) {
+                modal.type = 'noDown'
+                modal.cancelText = '取消'
+                modal.okText = '确定'
+                modal.content = `当前已是最新版本 v${version}`
+              } else {
+                modal.type = 'down'
+                modal.cancelText = '暂不下载'
+                modal.okText = '去下载'
+                modal.content = `发现最新版本 v${version}，是否去下载？体验更多功能`
+              }
+            })
           }
         },
         {
@@ -202,17 +223,27 @@ export const useMenu = () => {
     callBack()
     item.action && item.action()
   }
+
   // 点击菜单下拉项
   const onMenuChildItem = (item: ListItem) => {
     onClearAll()
     item.action && item.action()
   }
+
   // 隐藏下拉框
   const onHideDropdown = (cb: CallBackFn) => {
     callBack = cb
   }
 
-  return { aboutDrawer, menuList, onMenuItem, onMenuChildItem, onClearAll, onHideDropdown }
+  // 点击确定
+  const handleOk = async () => {
+    if (modal.type === 'down') {
+      ipcRenderer.invoke('open', 'https://github.com/biaov/mine-desktop/releases') // 渲染进程
+    }
+    modal.visible = false
+  }
+
+  return { aboutDrawer, menuList, modal, onMenuItem, onMenuChildItem, onClearAll, onHideDropdown, handleOk }
 }
 
 /**
@@ -226,7 +257,6 @@ export const useResize = () => {
       iconName: 'icon-minus',
       value: 'minimize',
       action() {
-        console.log(ipcRenderer, '--')
         ipcRenderer.invoke(this.value) // 渲染进程
       }
     },

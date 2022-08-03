@@ -1,8 +1,10 @@
-import { app, BrowserWindow, BrowserWindowConstructorOptions, ipcMain } from 'electron'
+/**
+ * @file 初始化程序
+ */
+import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron'
 import { resolve } from 'path'
 import { setupIcp } from './ipc'
-
-// 初始化程序
+import { createServer } from './server'
 
 /**
  * 创建窗口
@@ -21,16 +23,7 @@ const createWindow = () => {
   const window = new BrowserWindow(browserWindowOption)
 
   window.setMenuBarVisibility(false)
-
-  let pageUrl: string // 页面路径
-  // 开发
-  if (import.meta.env.MODE === 'development') {
-    pageUrl = 'http://localhost:3400'
-    window.webContents.openDevTools()
-  } else {
-    pageUrl = new URL('../../resources/vue/index.html', `file://${__dirname}`).toString() // 打包
-  }
-  window.loadURL(pageUrl)
+  createServer(window)
   setupIcp()
 }
 

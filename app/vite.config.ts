@@ -17,15 +17,14 @@ const config: UserConfig = {
       formats: ['cjs']
     },
     rollupOptions: {
-      external: ['electron', 'path', 'child_process'],
+      external: ['electron', 'path', 'child_process', 'fs'],
       output: {
         entryFileNames: '[name].cjs'
       }
     },
     ssr: false,
     ssrManifest: false,
-    emptyOutDir: true,
-    brotliSize: false
+    emptyOutDir: true
   }
 }
 

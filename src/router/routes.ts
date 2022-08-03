@@ -27,6 +27,13 @@ const routes: RouteItem[] = [
         meta: {
           title: '常规操作'
         }
+      },
+      {
+        path: 'icon',
+        name: 'window-icon',
+        meta: {
+          title: '更换图标'
+        }
       }
     ]
   }
@@ -39,7 +46,7 @@ const addComponents = (list: RouteItem[], parentPath?: string) => {
       addComponents(item.children, item.path)
     } else if (!item.component) {
       const path = (parentPath ? `${parentPath}/` : '') + item.path
-      item.component = modules[`../views/${path}/index.vue`]
+      item.component = modules[`../views/${path}/index.vue`] as LazyVue
     }
   })
 }

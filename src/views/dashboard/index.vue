@@ -12,6 +12,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import MineCharge from './components/MineCharge'
+
 const loading = ref(true)
 setTimeout(() => {
   loading.value = false

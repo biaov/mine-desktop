@@ -6,6 +6,27 @@
   "description": "关于 mine-desktop 项目的图标",
   "glyphs": [
     {
+      "icon_id": "499153",
+      "name": "disk",
+      "font_class": "disk",
+      "unicode": "e90b",
+      "unicode_decimal": 59659
+    },
+    {
+      "icon_id": "4933560",
+      "name": "select",
+      "font_class": "select",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "7617413",
+      "name": "重置",
+      "font_class": "zhongzhi",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
       "icon_id": "769422",
       "name": "已取消",
       "font_class": "shouye",

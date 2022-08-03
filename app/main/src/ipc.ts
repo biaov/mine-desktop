@@ -48,6 +48,18 @@ export const setupIcp = () => {
     },
     {
       channel: 'cancelTimedShutdown'
+    },
+    {
+      channel: 'disk'
+    },
+    {
+      channel: 'diskReset'
+    },
+    {
+      channel: 'selectFile'
+    },
+    {
+      channel: 'selectFolder'
     }
   ]
 
