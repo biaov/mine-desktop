@@ -7,14 +7,7 @@ export interface HandleChannelItem {
 }
 
 // IpcMain
-export interface CurIpcMain extends IpcMain {
-  [key: string]: any
-}
-
-// useActions return
-export interface UseActionsReturn {
-  [key: string]: any
-}
+export type CurIpcMain = Record<string, any> & IpcMain
 
 // aboutAction Return
 export interface AboutActionReturn {

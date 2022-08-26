@@ -1,6 +1,6 @@
 import { ipcMain, app } from 'electron'
 import packageJson from '../../../package.json'
-import { HandleChannelItem, CurIpcMain } from './interfaces'
+import { HandleChannelItem, CurIpcMain } from './types'
 import { useActions } from './hooks'
 
 // icp 程序

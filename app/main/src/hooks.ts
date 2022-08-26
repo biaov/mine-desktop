@@ -1,15 +1,15 @@
 import { app, screen, Point, shell, IpcMainInvokeEvent, BrowserWindow, dialog, OpenDialogOptions } from 'electron'
 import { exec } from 'child_process'
 import packageJson from '../../../package.json'
-import { UseActionsReturn, AboutActionReturn } from './interfaces'
+import { AboutActionReturn } from './types'
 import { copyFileSync, writeFileSync, rmSync } from 'fs'
 import { isUnDevelopment } from './env'
 
 /**
  * 主进程操作
- * @returns { UseActionsReturn } 操作 API
+ * @returns { Record<string, any> } 操作 API
  */
-export const useActions = (): UseActionsReturn => {
+export const useActions = (): Record<string, any> => {
   const window = BrowserWindow.getFocusedWindow() as BrowserWindow
   const startCursorPoint: Point = { x: 0, y: 0 }
   const startWindowPoint: Point = { x: 0, y: 0 }

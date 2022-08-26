@@ -1,7 +1,7 @@
 import { ref, reactive } from 'vue'
 import { message } from 'ant-design-vue'
 import { useRenderer } from '@/composables/useBridge'
-import { ListItem, Modal } from './interfaces'
+import { ListItem, Modal } from './types'
 
 export const useBtn = () => {
   const { ipcRenderer } = useRenderer()

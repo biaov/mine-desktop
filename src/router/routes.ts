@@ -1,5 +1,4 @@
-import { RouteItem } from './interfaces'
-import { LazyVue } from './types'
+import { LazyVue, RouteItem } from './types'
 
 const templateComponent: LazyVue = () => import('../views/layout/template.vue')
 const modules = import.meta.glob('../views/**/*.vue')

@@ -1,5 +1,3 @@
-import { Ref } from 'vue'
-
 // meta 类型
 export interface SidebarMeta {
   title: string
