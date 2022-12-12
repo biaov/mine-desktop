@@ -1,6 +1,6 @@
 const { createServer, createLogger } = require('vite')
 const electron = require('electron')
-const { spawn, exec } = require('child_process')
+const { spawn } = require('child_process')
 const { resetPath } = require('./path')
 const { createCompile, sharedConfig, log } = require('./create')
 

@@ -3,8 +3,9 @@
 </style>
 <template>
   <!-- layout -->
-  <div class="layout" :style="sidebarRef?.sidebarStyle">
-    <MineHeader></MineHeader>
+  <MineHeader></MineHeader>
+  <router-view v-if="rotate.meta.customLayout"></router-view>
+  <div class="layout" :style="sidebarRef?.sidebarStyle" v-else>
     <SideBar v-model:collapsed="isCollapsed" ref="sidebarRef"></SideBar>
     <main class="router-main">
       <router-view></router-view>
@@ -12,9 +13,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-import MineHeader from '@/components/MineHeader'
-import SideBar from '@/components/SideBar'
+import { useRoute } from 'vue-router'
 import { useLayout } from './hooks'
 
 const { sidebarRef, isCollapsed } = useLayout()
+const rotate = useRoute()
 </script>

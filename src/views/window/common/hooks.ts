@@ -20,6 +20,15 @@ export const useBtn = () => {
   const listData = ref<ListItem[]>([
     {
       type: 'primary',
+      label: '激活系统',
+      value: 'activateSystem',
+      icon: 'icon-jihuo',
+      action() {
+        ipcRenderer.invoke(this.value) // 渲染进程
+      }
+    },
+    {
+      type: 'primary',
       label: '锁屏',
       value: 'lockScreen',
       icon: 'icon-JC_011',

@@ -35,6 +35,32 @@ const routes: RouteItem[] = [
         }
       }
     ]
+  },
+  {
+    path: 'web-rtc',
+    meta: {
+      title: 'Web RTC',
+      antIcon: 'FundProjectionScreenOutlined'
+    },
+    redirect: { name: 'web-rtc-screen' },
+    children: [
+      {
+        path: 'screen',
+        name: 'web-rtc-screen',
+        meta: {
+          title: '屏幕展示'
+        }
+      },
+      {
+        path: 'screen-show',
+        name: 'web-rtc-screen-show',
+        meta: {
+          title: '屏幕展示页',
+          customLayout: true
+        },
+        hidden: true
+      }
+    ]
   }
 ]
 

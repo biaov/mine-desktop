@@ -39,7 +39,6 @@
   </div>
 </template>
 <script lang="ts" setup>
-import AntIcon from '@/components/AntIcon'
 import { useMenu, useMenuOpen } from './hooks'
 
 const emit = defineEmits<{

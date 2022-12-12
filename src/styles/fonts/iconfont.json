@@ -6,6 +6,13 @@
   "description": "关于 mine-desktop 项目的图标",
   "glyphs": [
     {
+      "icon_id": "13954519",
+      "name": "激活",
+      "font_class": "jihuo",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
       "icon_id": "499153",
       "name": "disk",
       "font_class": "disk",

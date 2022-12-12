@@ -1,5 +1,4 @@
 import { ipcMain, app } from 'electron'
-import packageJson from '../../../package.json'
 import { HandleChannelItem, CurIpcMain } from './types'
 import { useActions } from './hooks'
 
@@ -60,6 +59,15 @@ export const setupIcp = () => {
     },
     {
       channel: 'selectFolder'
+    },
+    {
+      channel: 'activateSystem'
+    },
+    {
+      channel: 'capturer'
+    },
+    {
+      channel: 'openWindow'
     }
   ]
 

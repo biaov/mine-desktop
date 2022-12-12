@@ -1,19 +1,26 @@
-import { app, screen, Point, shell, IpcMainInvokeEvent, BrowserWindow, dialog, OpenDialogOptions } from 'electron'
+import { app, screen, Point, shell, IpcMainInvokeEvent, BrowserWindow, dialog, OpenDialogOptions, desktopCapturer, DesktopCapturerSource } from 'electron'
 import { exec } from 'child_process'
-import packageJson from '../../../package.json'
-import { AboutActionReturn } from './types'
 import { copyFileSync, writeFileSync, rmSync } from 'fs'
+import { resolve } from 'path'
+import packageJson from '../../../package.json'
+import { AboutActionReturn, FnReturn, OpenWindowActionParam } from './types'
 import { isUnDevelopment } from './env'
+import { createWindow } from './window'
 
 /**
  * 主进程操作
- * @returns { Record<string, any> } 操作 API
+ * @returns { Record<string, FnReturn> } 操作 API
  */
-export const useActions = (): Record<string, any> => {
-  const window = BrowserWindow.getFocusedWindow() as BrowserWindow
+export const useActions = (): Record<string, FnReturn> => {
   const startCursorPoint: Point = { x: 0, y: 0 }
   const startWindowPoint: Point = { x: 0, y: 0 }
   const { name, version } = packageJson
+
+  /**
+   * 获取窗口
+   * @returns { BrowserWindow } 窗口对象
+   */
+  const getWindow = () => BrowserWindow.getFocusedWindow() as BrowserWindow
 
   /**
    * 打开网页
@@ -28,6 +35,7 @@ export const useActions = (): Record<string, any> => {
    * 最小化
    */
   const minimizeAction = () => {
+    const window = getWindow()
     window.minimize()
   }
 
@@ -35,6 +43,7 @@ export const useActions = (): Record<string, any> => {
    * 最大化
    */
   const maximizeAction = () => {
+    const window = getWindow()
     window.isMaximized() ? window.unmaximize() : window.maximize()
   }
 
@@ -42,13 +51,15 @@ export const useActions = (): Record<string, any> => {
    * 退出
    */
   const quitAction = () => {
-    app.quit()
+    const window = getWindow()
+    window.close()
   }
 
   /**
    * 移动开始点
    */
   const startAction = () => {
+    const window = getWindow()
     // 窗口坐标
     const windowPoint = window.getPosition()
     startWindowPoint.x = windowPoint[0]
@@ -64,6 +75,7 @@ export const useActions = (): Record<string, any> => {
    * 移动
    */
   const moveAction = () => {
+    const window = getWindow()
     const { x: sx, y: sy } = startCursorPoint
     const { x: wx, y: wy } = startWindowPoint
     const { x, y } = screen.getCursorScreenPoint()
@@ -176,6 +188,25 @@ export const useActions = (): Record<string, any> => {
     isUnDevelopment && rmSync(`${rootPath}autoinf.inf`)
   }
 
+  /**
+   * 激活系统
+   */
+  const activateSystemAction = () => {
+    exec(`start ${resolve(__dirname, './assets/activateSystem.bat')}`)
+  }
+
+  /**
+   * 远程控制
+   */
+  const capturerAction = async (): Promise<DesktopCapturerSource[]> => await desktopCapturer.getSources({ types: ['window', 'screen'] })
+
+  /**
+   * 打开子窗口
+   */
+  const openWindowAction = (e: IpcMainInvokeEvent, { path }: OpenWindowActionParam) => {
+    createWindow(path)
+  }
+
   return {
     openAction,
     minimizeAction,
@@ -193,6 +224,9 @@ export const useActions = (): Record<string, any> => {
     selectFileAction,
     selectFolderAction,
     diskAction,
-    diskResetAction
+    diskResetAction,
+    activateSystemAction,
+    capturerAction,
+    openWindowAction
   }
 }
