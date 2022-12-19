@@ -2,6 +2,9 @@ import { ref, onMounted } from 'vue'
 import { useRenderer } from '@/composables/useBridge'
 import { DesktopCapturerSource } from './types'
 
+/**
+ * 连接
+ */
 export const useConnection = () => {
   const { ipcRenderer } = useRenderer()
   const v1Ref = ref<HTMLVideoElement>()
@@ -15,8 +18,8 @@ export const useConnection = () => {
             mandatory: {
               chromeMediaSource: 'desktop',
               chromeMediaSourceId: id,
-              maxWidth: screen.width,
-              maxHeight: screen.height
+              maxWidth: globalThis.screen.width,
+              maxHeight: globalThis.screen.height
             }
           }
         } as any)

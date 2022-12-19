@@ -68,6 +68,9 @@ export const setupIcp = () => {
     },
     {
       channel: 'openWindow'
+    },
+    {
+      channel: 'wordNum'
     }
   ]
 

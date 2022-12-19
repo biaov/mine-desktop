@@ -27,3 +27,8 @@ export interface CreateServeParam {
   window: BrowserWindow
   path?: string
 }
+
+export interface WordNumActionParam {
+  type: string
+  speed?: number
+}

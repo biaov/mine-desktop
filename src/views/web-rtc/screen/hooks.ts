@@ -1,14 +1,13 @@
 import { useRenderer } from '@/composables/useBridge'
 
-// 屏幕展示
+/**
+ * 屏幕展示
+ */
 export const useScreen = () => {
   const { ipcRenderer } = useRenderer()
+
   const onShowScreen = () => {
-    try {
-      ipcRenderer.invoke('openWindow', { path: 'web-rtc/screen-show' })
-    } catch (error) {
-      console.log(error, '--error')
-    }
+    ipcRenderer.invoke('openWindow', { path: 'web-rtc/screen-show' })
   }
 
   return { onShowScreen }

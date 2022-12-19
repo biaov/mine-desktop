@@ -4,9 +4,9 @@ export interface SidebarMeta {
   antIcon?: string
   customLayout?: boolean
 }
-
-type Redirect = Pick<SidebarChildItem, 'name'>
-
+interface Redirect {
+  name?: string
+}
 // 导航子类型
 export interface SidebarChildItem {
   name?: string

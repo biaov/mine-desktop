@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig, Canceler } from 'axios'
 import baseConfig from '@/config'
 
 const pendingAjax: string[] = [] // 等待请求
-const CancelToken = axios.CancelToken
+const { CancelToken } = axios
 const cacelKey = 'requesting' // 请求 key
 
 // 移除等待请求
@@ -49,8 +49,6 @@ service.interceptors.response.use(
     return response.data?.data ?? response.data
   },
   data => {
-    console.log(data, '--data')
-
     const { response, message: msg } = data
     if (msg === cacelKey) return Promise.reject(msg)
     removePendingAjax(response.config)

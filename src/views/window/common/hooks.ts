@@ -3,6 +3,9 @@ import { message } from 'ant-design-vue'
 import { useRenderer } from '@/composables/useBridge'
 import { ListItem, Modal } from './types'
 
+/**
+ * 按钮操作
+ */
 export const useBtn = () => {
   const { ipcRenderer } = useRenderer()
 

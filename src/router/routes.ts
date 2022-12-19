@@ -61,6 +61,23 @@ const routes: RouteItem[] = [
         hidden: true
       }
     ]
+  },
+  {
+    path: 'tools',
+    meta: {
+      title: '工具',
+      antIcon: 'ToolOutlined'
+    },
+    redirect: { name: 'tools-word-num' },
+    children: [
+      {
+        path: 'word-num',
+        name: 'tools-word-num',
+        meta: {
+          title: '刷字数'
+        }
+      }
+    ]
   }
 ]
 

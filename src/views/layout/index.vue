@@ -3,12 +3,12 @@
 </style>
 <template>
   <!-- layout -->
-  <MineHeader></MineHeader>
-  <router-view v-if="rotate.meta.customLayout"></router-view>
+  <mine-header />
+  <router-view v-if="rotate.meta.customLayout" />
   <div class="layout" :style="sidebarRef?.sidebarStyle" v-else>
-    <SideBar v-model:collapsed="isCollapsed" ref="sidebarRef"></SideBar>
+    <side-bar v-model:collapsed="isCollapsed" ref="sidebarRef" />
     <main class="router-main">
-      <router-view></router-view>
+      <router-view />
     </main>
   </div>
 </template>

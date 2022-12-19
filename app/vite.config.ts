@@ -17,7 +17,7 @@ const config: UserConfig = {
       formats: ['cjs']
     },
     rollupOptions: {
-      external: ['electron', 'path', 'child_process', 'fs'],
+      external: ['electron', 'path', 'child_process', 'fs', 'robotjs'],
       output: {
         entryFileNames: '[name].cjs'
       }
