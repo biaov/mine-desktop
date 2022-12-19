@@ -26,7 +26,7 @@ export const createWindow = (path?: string) => {
   const exePath = app.getPath('exe')
 
   window.setAppDetails({
-    appId: 'mine.desktop.version',
+    appId: 'mine.desktop.app',
     appIconPath: resolve(__dirname, './assets/favicon.ico'),
     appIconIndex: 0,
     relaunchDisplayName: 'MINE DESKTOP',

@@ -1,6 +1,6 @@
 {
   "appId": "mine.desktop.app",
-  "electronVersion": "19.0.4",
+  "electronVersion": "22.0.0",
   "copyright": "Copyright (c) 2022-present biaov",
   "asar": true,
   "directories": {
