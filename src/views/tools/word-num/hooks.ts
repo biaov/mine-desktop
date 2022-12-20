@@ -53,3 +53,17 @@ export const useKeypad = ({ speed }: UseKeypadShareParam) => {
 
   return { onKeyup, onWordBlur }
 }
+
+/**
+ * alert 提示
+ */
+export const useAlert = () => {
+  // 列表数据
+  const alertList = ref([
+    { message: '注意：当你开始的时候，请不要切换窗口，不然会自动停止，这是为了避免造成不好的影响。', type: 'warning' },
+    { message: '提示：请切换到你要刷字数的输入法，在以下文本输入框输入，按键 s 表示开始，按键 e 表示停止。', type: 'info' },
+    { message: '速度输入框：正整数，数值越大，速度越小，最小值为 100，当你改变速度时，得重新按键开始，才会生效。', type: 'info' }
+  ])
+
+  return { alertList }
+}
