@@ -71,6 +71,9 @@ export const setupIcp = () => {
     },
     {
       channel: 'wordNum'
+    },
+    {
+      channel: 'visibleDesktop'
     }
   ]
 

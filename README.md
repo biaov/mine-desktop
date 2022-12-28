@@ -3,7 +3,7 @@
 一个使用 Vite + TS + Vue3.x + Electron 开发的桌面软件 👍
 
 <h2 align="center">
-  <a href="https://github.com/biaov/mine-desktop/releases/tag/v1.0.0"><img src="https://img.shields.io/badge/version-1.0.3-blue" /></a>
+  <a href="https://github.com/biaov/mine-desktop/releases/tag/v1.0.0"><img src="https://img.shields.io/badge/version-1.0.4-blue" /></a>
   <a href="https://github.com/biaov/mine-desktop/blob/master/LICENSE"><img src="https://img.shields.io/github/license/biaov/mine-desktop.svg" /></a>
 </h2>
 
@@ -13,7 +13,7 @@
 
 ## 下载地址
 
-- [最新版本](https://github.com/biaov/mine-desktop/releases/tag/v1.0.3)
+- [最新版本](https://github.com/biaov/mine-desktop/releases/tag/v1.0.4)
 - [所有版本](https://github.com/biaov/mine-desktop/releases)
 
 ## 功能
@@ -28,6 +28,7 @@
 - 重置磁盘图标
 - 屏幕显示
 - 输入法刷字数
+- 显示隐藏电脑桌面
 
 ## 安装依赖
 

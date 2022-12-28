@@ -23,12 +23,19 @@ export interface OpenWindowActionParam {
   path?: string
 }
 
+// CreateServeAction 参数
 export interface CreateServeParam {
   window: BrowserWindow
   path?: string
 }
 
+// wordNumAction 参数
 export interface WordNumActionParam {
   type: string
   speed?: number
+}
+
+// visibleDesktopAction 参数
+export interface VisibleDesktopParam {
+  type: 'show' | 'hide'
 }

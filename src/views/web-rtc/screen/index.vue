@@ -3,7 +3,7 @@
 </style>
 <template>
   <a-card title="屏幕">
-    <mine-button type="primary" @click="onShowScreen">屏幕展示</mine-button>
+    <mine-button type="primary" ant-icon="FundProjectionScreenOutlined" @click="onShowScreen">屏幕展示</mine-button>
   </a-card>
 </template>
 <script lang="ts" setup>

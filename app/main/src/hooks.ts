@@ -4,7 +4,7 @@ import { copyFileSync, writeFileSync, rmSync } from 'fs'
 import { resolve } from 'path'
 import robot from 'robotjs'
 import packageJson from '../../../package.json'
-import { AboutActionReturn, FnReturn, OpenWindowActionParam, WordNumActionParam } from './types'
+import { AboutActionReturn, FnReturn, OpenWindowActionParam, WordNumActionParam, VisibleDesktopParam } from './types'
 import { isUnDevelopment } from './env'
 import { createWindow } from './window'
 
@@ -173,6 +173,18 @@ export const useActions = (): Record<string, FnReturn> => {
     }
   }
 
+  // 显示隐藏桌面
+  const visibleDesktopAction = (e: IpcMainInvokeEvent, { type }: VisibleDesktopParam) => {
+    switch (type) {
+      case 'show':
+        exec(`explorer`)
+        break
+      case 'hide':
+        exec(`taskkill /f /im explorer.exe`)
+        break
+    }
+  }
+
   return {
     openAction,
     minimizeAction,
@@ -194,6 +206,7 @@ export const useActions = (): Record<string, FnReturn> => {
     activateSystemAction,
     capturerAction,
     openWindowAction,
-    wordNumAction
+    wordNumAction,
+    visibleDesktopAction
   }
 }

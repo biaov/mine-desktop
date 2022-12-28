@@ -1,7 +1,7 @@
 {
   "name": "mine-desktop",
   "private": true,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "./dist/resources/app/main/index.cjs",
   "author": {
     "name": "biaov",
@@ -27,12 +27,10 @@
     "node": ">=12"
   },
   "keywords": [
-    "desktop-software",
+    "桌面软件",
     "Electron",
     "TypeScript",
-    "Vue",
     "Vue3",
-    "VueJs",
     "Vite"
   ],
   "repository": {

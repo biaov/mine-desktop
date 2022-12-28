@@ -96,6 +96,30 @@ export const useBtn = () => {
           message.success('已取消')
         })
       }
+    },
+    {
+      type: 'danger',
+      label: '隐藏桌面',
+      value: 'visibleDesktop',
+      icon: 'icon-hide',
+      action() {
+        // 渲染进程
+        ipcRenderer.invoke(this.value, { type: 'hide' }).then(() => {
+          message.success('已隐藏')
+        })
+      }
+    },
+    {
+      type: 'primary',
+      label: '显示桌面',
+      value: 'visibleDesktop',
+      icon: 'icon-show',
+      action() {
+        // 渲染进程
+        ipcRenderer.invoke(this.value, { type: 'show' }).then(() => {
+          message.success('已显示')
+        })
+      }
     }
   ])
   const onClickItem = (item: ListItem) => {
