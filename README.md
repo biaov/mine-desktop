@@ -3,8 +3,8 @@
 一个使用 Vite + TS + Vue3.x + Electron 开发的桌面软件 👍
 
 <h2 align="center">
-  <a href="https://github.com/biaov/mine-desktop/releases/tag/v1.0.4"><img src="https://img.shields.io/badge/version-1.0.4-blue" /></a>
-  <a href="https://github.com/biaov/mine-desktop/blob/main/LICENSE"><img src="https://img.shields.io/github/license/biaov/mine-desktop.svg" /></a>
+  <a href="https://github.com/biaov/mine-desktop/releases/tag/v1.0.4"><img src="https://img.shields.io/badge/version-1.0.4-blue?logo=npm" /></a>
+  <a href="https://github.com/biaov/mine-desktop/blob/main/LICENSE"><img src="https://img.shields.io/github/license/biaov/mine-desktop.svg?logo=Unlicense" /></a>
 </h2>
 
 ## 技术栈
