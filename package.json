@@ -1,7 +1,7 @@
 {
   "name": "mine-desktop",
-  "private": true,
-  "version": "1.0.4",
+  "private": false,
+  "version": "1.0.5",
   "main": "./dist/resources/app/main/index.cjs",
   "author": {
     "name": "biaov",

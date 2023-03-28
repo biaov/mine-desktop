@@ -178,7 +178,7 @@ export const useMenu = () => {
           value: 'checkUpdate',
           shortcut: 'Ctrl + U',
           action() {
-            Promise.all([ipcRenderer.invoke(this.value), newVersionApi()]).then(([localVersion, { version }]: [string, any]) => {
+            Promise.all([ipcRenderer.invoke(this.value), newVersionApi.get()]).then(([localVersion, { version }]: [string, any]) => {
               modal.visible = true
               if (localVersion === version) {
                 modal.type = 'noDown'

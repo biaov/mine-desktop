@@ -76,6 +76,12 @@ const routes: RouteItem[] = [
         meta: {
           title: '刷字数'
         }
+      },{
+        path: 'short-chain',
+        name: 'tools-short-chain',
+        meta: {
+          title: '生成短链'
+        }
       }
     ]
   }

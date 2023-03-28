@@ -1,4 +1,4 @@
-import { app, screen, Point, shell, IpcMainInvokeEvent, BrowserWindow, dialog, OpenDialogOptions, desktopCapturer, DesktopCapturerSource } from 'electron'
+import { app, screen, Point, shell, IpcMainInvokeEvent, BrowserWindow, dialog, OpenDialogOptions, desktopCapturer, DesktopCapturerSource, clipboard } from 'electron'
 import { exec } from 'child_process'
 import { copyFileSync, writeFileSync, rmSync } from 'fs'
 import { resolve } from 'path'
@@ -185,6 +185,11 @@ export const useActions = (): Record<string, FnReturn> => {
     }
   }
 
+  // 复制到剪切板
+  const copyAction = (e: IpcMainInvokeEvent, content: string) => {
+    clipboard.writeText(content, 'clipboard')
+  }
+
   return {
     openAction,
     minimizeAction,
@@ -207,6 +212,7 @@ export const useActions = (): Record<string, FnReturn> => {
     capturerAction,
     openWindowAction,
     wordNumAction,
-    visibleDesktopAction
+    visibleDesktopAction,
+    copyAction
   }
 }

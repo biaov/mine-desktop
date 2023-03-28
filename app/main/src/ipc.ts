@@ -1,4 +1,4 @@
-import { ipcMain, app } from 'electron'
+import { ipcMain } from 'electron'
 import { HandleChannelItem, CurIpcMain } from './types'
 import { useActions } from './hooks'
 
@@ -74,6 +74,9 @@ export const setupIcp = () => {
     },
     {
       channel: 'visibleDesktop'
+    },
+    {
+      channel: 'copy'
     }
   ]
 

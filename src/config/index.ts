@@ -1,3 +1,1 @@
-export default {
-  baseURL: 'http://desktop.biaov.cn/'
-}
+export const baseURL = 'http://desktop.biaov.cn/api/' // 基础前缀
