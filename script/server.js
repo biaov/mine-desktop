@@ -26,5 +26,8 @@ exports.createElectronServer = async () => {
 
   const spawnProgress = spawn(String(electron), ['.', ' -enable-webgl', '--no-sandbox', '--disable-dev-shm-usage'])
   spawnProgress.stdout.on('data', log)
+  spawnProgress.stdout.on('close', () => {
+    process.exit(0)
+  })
   return
 }
