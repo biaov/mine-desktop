@@ -40,19 +40,17 @@
 </template>
 <script lang="ts" setup>
 import { useMenu, useMenuOpen } from './hooks'
+import type { Props, Emits } from './types'
 
-const emit = defineEmits<{
-  (event: 'update:collapsed', collapsed: boolean): void
-}>()
+defineOptions({
+  name: 'SideBar'
+})
 
-const props = withDefaults(
-  defineProps<{
-    collapsed?: boolean // 收缩状态
-  }>(),
-  {
-    collapsed: false
-  }
-)
+const emit = defineEmits<Emits>()
+
+const props = withDefaults(defineProps<Props>(), {
+  collapsed: false
+})
 const { openKeys, selectedKeys, onOpenChange } = useMenuOpen()
 const { listData, isCollapsed, sidebarStyle, onCollapsed, onMenuItem } = useMenu(props, emit)
 

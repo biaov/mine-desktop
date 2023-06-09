@@ -2,11 +2,19 @@ import axios, { AxiosRequestConfig, Canceler } from 'axios'
 import { message } from 'ant-design-vue'
 import { baseURL } from '@/config'
 
-const pendingAjax: string[] = [] // 等待请求
+/**
+ * 等待请求
+ */
+const pendingAjax: string[] = []
 const { CancelToken } = axios
-const cacelKey = 'requesting' // 请求 key
+/**
+ * 请求 key
+ */
+const cacelKey = 'requesting'
 
-// 移除等待请求
+/**
+ * 移除等待请求
+ */
 const removePendingAjax = (config: AxiosRequestConfig<any>, cancel?: Canceler) => {
   const params = typeof config.params === 'string' ? config.params : JSON.stringify(config.params)
   const data = typeof config.data === 'string' ? config.data : JSON.stringify(config.data)
@@ -20,7 +28,9 @@ const removePendingAjax = (config: AxiosRequestConfig<any>, cancel?: Canceler) =
   }
 }
 
-// 创建 axios 实例
+/**
+ * 创建 axios 实例
+ */
 export const service = axios.create({
   baseURL,
   timeout: 10000, // 请求超时时间
@@ -29,7 +39,9 @@ export const service = axios.create({
   }
 })
 
-// request 请求拦截器
+/**
+ * request 请求拦截器
+ */
 service.interceptors.request.use(
   config => {
     // 添加取消 key

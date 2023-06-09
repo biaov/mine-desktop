@@ -1,5 +1,13 @@
-// props
+/**
+ * props
+ */
 export interface Props {
+  /**
+   * 名称
+   */
   name: string
-  type: string
+  /**
+   * 类型
+   */
+  type?: 'primary' | 'success' | 'info' | 'warning' | 'danger' | ''
 }

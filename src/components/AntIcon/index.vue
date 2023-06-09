@@ -7,15 +7,13 @@
 </template>
 <script lang="ts" setup>
 import { useIcon } from './hooks'
+import type { Props } from './types'
 
-const props = withDefaults(
-  defineProps<{
-    name: string // 名称
-    type?: string // 类型: primary | success | info | warning | danger
-  }>(),
-  {
-    type: ''
-  }
-)
+defineOptions({
+  name: 'AntIcon'
+})
+const props = withDefaults(defineProps<Props>(), {
+  type: ''
+})
 const { curIcon } = useIcon(props)
 </script>

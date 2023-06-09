@@ -7,9 +7,8 @@ const config = {
     'vue/setup-compiler-macros': true
   },
   globals: {
-    NodeListOf: 'readonly',
-    EventListenerOrEventListenerObject: 'readonly',
-    NodeJS: 'readonly'
+    defineSlots: 'readonly',
+    defineOptions: 'readonly'
   },
   extends: ['plugin:vue/vue3-essential', 'airbnb-base', 'plugin:prettier/recommended'],
   parserOptions: {

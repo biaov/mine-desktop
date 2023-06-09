@@ -12,18 +12,19 @@
   </a-button>
 </template>
 <script lang="ts" setup>
+import type { DefaultSlots } from '../types'
 import AntIcon from '../AntIcon'
 import { useHandle } from './hooks'
+import type { Props, Emits } from './types'
 
-const emit = defineEmits<{
-  (event: 'click'): void
-}>()
+defineOptions({
+  name: 'MineButton'
+})
+defineSlots<DefaultSlots>()
 
-const props = defineProps<{
-  type: string
-  antIcon?: string
-  icon?: string
-}>()
+const emit = defineEmits<Emits>()
 
-const { onClick } = useHandle(props, emit)
+defineProps<Props>()
+
+const { onClick } = useHandle(emit)
 </script>

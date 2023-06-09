@@ -10,7 +10,9 @@ import { newVersionApi } from '@/api/public'
  */
 export const useContextmenu = ({ menuList, onClearAll, onHideDropdown }: ShareData): ContextmenuReturn => {
   const { ipcRenderer } = useRenderer()
-  // 下拉列表
+  /**
+   * 下拉列表
+   */
   const dropdownList = ref<ListItem[]>([
     {
       label: '最大化',
@@ -35,20 +37,27 @@ export const useContextmenu = ({ menuList, onClearAll, onHideDropdown }: ShareDa
       }
     }
   ])
-  // 下拉框配置项
+
+  /**
+   * 下拉框配置项
+   */
   const dropdownConfig = ref<DropdownConfig>({
     visible: false,
     x: 0,
     y: 0
   })
 
-  // 点击下拉框项
+  /**
+   * 点击下拉框项
+   */
   const onDropdownItem = (item: ListItem) => {
     dropdownConfig.value.visible = false
     item.action && item.action()
   }
 
-  // 右击
+  /**
+   * 右击
+   */
   const onContextmenu = (e: MouseEvent) => {
     onClearAll()
     dropdownConfig.value = {
@@ -58,7 +67,9 @@ export const useContextmenu = ({ menuList, onClearAll, onHideDropdown }: ShareDa
     }
   }
 
-  // 执行快捷键方法
+  /**
+   * 执行快捷键方法
+   */
   const onShortcut = (list: ListItem[], value: string) => {
     const isAllExist = list.some(item => {
       let isExist: boolean | number | undefined = false
@@ -286,7 +297,10 @@ export const useResize = () => {
  */
 export const useMove = (): MoveReturn => {
   const { ipcRenderer } = useRenderer()
-  // 鼠标按下
+
+  /**
+   * 鼠标按下
+   */
   const onMousedown = () => {
     ipcRenderer.send('start')
     // 表达式声明移动事件

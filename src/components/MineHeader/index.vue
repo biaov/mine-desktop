@@ -51,6 +51,9 @@
 <script lang="ts" setup>
 import { useContextmenu, useMenu, useResize, useMove } from './hooks'
 
+defineOptions({
+  name: 'MineHeader'
+})
 const { aboutDrawer, menuList, modal, onMenuItem, onMenuChildItem, onClearAll, onHideDropdown, handleOk } = useMenu()
 const { dropdownList, dropdownConfig, onDropdownItem, onContextmenu } = useContextmenu({ menuList, onClearAll, onHideDropdown })
 const { resizeList } = useResize()

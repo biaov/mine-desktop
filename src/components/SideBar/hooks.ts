@@ -4,7 +4,7 @@ import routes from '@/router/routes'
 import { RouteItem } from '@/router/types'
 import { Props, Emits } from './types'
 
-export const useMenu = (props: Props, emit: Emits) => {
+export const useMenu = (props: Readonly<Required<Props>>, emit: Emits) => {
   const router = useRouter()
   const listData = ref(routes)
   /**
