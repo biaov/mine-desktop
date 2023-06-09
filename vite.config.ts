@@ -1,10 +1,11 @@
 import { defineConfig, UserConfig } from 'vite'
 import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
+import eslint from 'vite-plugin-eslint'
 
 export const config: UserConfig = {
   base: './',
-  plugins: [vue()],
+  plugins: [eslint(), vue()],
   resolve: {
     // 路径别名
     alias: {

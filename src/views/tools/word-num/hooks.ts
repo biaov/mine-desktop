@@ -6,11 +6,22 @@ import { UseKeypadShareParam } from './types'
  * 速度操作
  */
 export const useSpeed = () => {
-  const defaultSpeed = 1000 // 默认速度
-  const minSpeed = 100 // 最小速度
-  const speed = ref(defaultSpeed) // 速度输入
+  /**
+   * 默认速度
+   */
+  const defaultSpeed = 1000
+  /**
+   * 最小速度
+   */
+  const minSpeed = 100
+  /**
+   * 速度输入
+   */
+  const speed = ref(defaultSpeed)
 
-  // 速度输入框
+  /**
+   * 速度输入框
+   */
   const onChange = () => {
     if (speed.value) {
       const newVal = parseFloat(`${speed.value}`)
@@ -18,7 +29,9 @@ export const useSpeed = () => {
     }
   }
 
-  // 失去焦点
+  /**
+   * 失去焦点
+   */
   const onBlur = () => {
     speed.value < minSpeed && (speed.value = defaultSpeed)
   }
@@ -32,7 +45,9 @@ export const useSpeed = () => {
 export const useKeypad = ({ speed }: UseKeypadShareParam) => {
   const { ipcRenderer } = useRenderer()
 
-  // 键盘输入
+  /**
+   * 键盘输入
+   */
   const onKeyup = (e: KeyboardEvent) => {
     switch (e.code) {
       case 'KeyS':
@@ -46,7 +61,9 @@ export const useKeypad = ({ speed }: UseKeypadShareParam) => {
     }
   }
 
-  // 失去焦点
+  /**
+   * 失去焦点
+   */
   const onWordBlur = () => {
     ipcRenderer.invoke('wordNum', { type: 'end' })
   }
@@ -58,7 +75,9 @@ export const useKeypad = ({ speed }: UseKeypadShareParam) => {
  * alert 提示
  */
 export const useAlert = () => {
-  // 列表数据
+  /**
+   * 列表数据
+   */
   const alertList = ref([
     { message: '注意：当你开始的时候，请不要切换窗口，不然会自动停止，这是为了避免造成不好的影响。', type: 'warning' },
     { message: '提示：请切换到你要刷字数的输入法，在以下文本输入框输入，按键 s 表示开始，按键 e 表示停止。', type: 'info' },

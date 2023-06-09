@@ -3,12 +3,17 @@ import { message, Form } from 'ant-design-vue'
 import { shortChainApi } from '@/api/short-chain'
 import { useRenderer } from '@/composables/useBridge'
 
-// 新增/修改表单
+/**
+ * 新增/修改表单
+ */
 export const useForm = () => {
   const { ipcRenderer } = useRenderer()
   const origin = Object.freeze('http://desktop.biaov.cn/analy/')
   const shortChain = ref('--')
-  // 表单
+
+  /**
+   * 表单
+   */
   const formState = ref({
     content: ''
   })

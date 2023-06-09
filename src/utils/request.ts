@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, Canceler } from 'axios'
-import { baseURL } from '@/config'
 import { message } from 'ant-design-vue'
+import { baseURL } from '@/config'
 
 const pendingAjax: string[] = [] // 等待请求
 const { CancelToken } = axios
@@ -59,6 +59,8 @@ service.interceptors.response.use(
       case 400:
       case 422:
         message.error(data)
+        break
+      default:
         break
     }
     return Promise.reject(response)

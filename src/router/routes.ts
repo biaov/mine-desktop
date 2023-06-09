@@ -2,7 +2,10 @@ import { LazyVue, RouteItem } from './types'
 
 const templateComponent: LazyVue = () => import('../views/layout/template.vue')
 const modules = import.meta.glob('../views/**/*.vue')
-// 路由配置
+
+/**
+ * 路由配置
+ */
 const routes: RouteItem[] = [
   {
     path: 'dashboard',
@@ -76,7 +79,8 @@ const routes: RouteItem[] = [
         meta: {
           title: '刷字数'
         }
-      },{
+      },
+      {
         path: 'short-chain',
         name: 'tools-short-chain',
         meta: {

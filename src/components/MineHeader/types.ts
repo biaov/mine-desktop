@@ -1,6 +1,8 @@
 import { Ref } from 'vue'
 
-// 列表
+/**
+ * 列表
+ */
 export interface ListItem {
   label?: string
   value: string
@@ -17,21 +19,27 @@ export type CallBackFn = () => void
 
 export type ClearAllFn = (list?: ListItem[]) => void
 
-// 共享数据
+/**
+ * 共享数据
+ */
 export interface ShareData {
   menuList: Ref<ListItem[]>
   onClearAll: (list?: ListItem[]) => void
   onHideDropdown: (callback: () => void) => void
 }
 
-// 下拉配置
+/**
+ * 下拉配置
+ */
 export interface DropdownConfig {
   visible: boolean
   x: string | number
   y: string | number
 }
 
-// useContextmenu 返回数据
+/**
+ * useContextmenu 返回数据
+ */
 export interface ContextmenuReturn {
   dropdownList: Ref<ListItem[]>
   dropdownConfig: Ref<DropdownConfig>
@@ -43,19 +51,25 @@ export interface MoveReturn {
   onMousedown: (e: MouseEvent) => void
 }
 
-// package.json
+/**
+ * package.json
+ */
 export interface PackageJson {
   name: string
   version: string
 }
 
-// okButtonProps
+/**
+ * okButtonProps
+ */
 export interface OkButtonProps {
   type: string
   danger?: boolean
 }
 
-// modal
+/**
+ * modal
+ */
 export interface Modal {
   visible: boolean
   title: string

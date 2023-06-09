@@ -7,7 +7,10 @@ import { Props, Emits } from './types'
 export const useMenu = (props: Props, emit: Emits) => {
   const router = useRouter()
   const listData = ref(routes)
-  const isCollapsed = ref(props.collapsed) // 是否收缩
+  /**
+   * 是否收缩
+   */
+  const isCollapsed = ref(props.collapsed)
   const sidebarStyle = computed(() => `--sidebar-width:${isCollapsed.value ? 80 : 200}px;`)
   const onCollapsed = () => {
     isCollapsed.value = !isCollapsed.value

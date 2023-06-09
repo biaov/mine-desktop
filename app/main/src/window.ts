@@ -6,7 +6,9 @@ import { resolve } from 'path'
 import { setupIcp } from './ipc'
 import { createServer } from './server'
 
-// 创建窗口
+/**
+ * 创建窗口
+ */
 export const createWindow = (path?: string) => {
   const browserWindowOption: BrowserWindowConstructorOptions = {
     titleBarStyle: 'hidden',
@@ -22,7 +24,9 @@ export const createWindow = (path?: string) => {
   const window = new BrowserWindow(browserWindowOption)
 
   window.setMenuBarVisibility(false)
-  // 设置任务栏图标
+  /**
+   * 设置任务栏图标
+   */
   const exePath = app.getPath('exe')
 
   window.setAppDetails({

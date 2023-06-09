@@ -1,1 +1,4 @@
-export type GlobalThisElectron = typeof globalThis & { electron: any } // Electron
+/**
+ * Electron
+ */
+export type GlobalThisElectron = typeof globalThis & { electron: any }

@@ -2,7 +2,9 @@ import { ipcMain } from 'electron'
 import { HandleChannelItem, CurIpcMain } from './types'
 import { useActions } from './hooks'
 
-// icp 程序
+/**
+ * icp 程序
+ */
 export const setupIcp = () => {
   const actions = useActions()
 

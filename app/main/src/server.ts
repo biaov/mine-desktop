@@ -2,7 +2,10 @@ import { isDevelopment } from './env'
 import { CreateServeParam } from './types'
 
 export const createServer = ({ window, path = '' }: CreateServeParam) => {
-  let pageUrl: string // 页面路径
+  /**
+   * 页面路径
+   */
+  let pageUrl: string
   path && (path = `#/${path}`)
   // 开发
   if (isDevelopment) {
