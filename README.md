@@ -7,6 +7,10 @@
   <a href="https://github.com/biaov/mine-desktop/blob/main/LICENSE"><img src="https://img.shields.io/github/license/biaov/mine-desktop.svg?logo=Unlicense" /></a>
 </h2>
 
+## 支持环境
+
+- windows
+
 ## 技术栈
 
 > Vite + TS + Vue3.x + Electron + Eslint + Less + NodeJs

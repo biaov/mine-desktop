@@ -49,19 +49,13 @@
     }
   ],
   "dependencies": {
-    "@ant-design/icons-vue": "^6.1.0",
-    "ant-design-vue": "^3.2.20",
-    "axios": "^1.4.0",
-    "moment": "^2.29.4",
-    "robotjs": "^0.6.0",
-    "vue": "^3.3.4",
-    "vue-router": "^4.2.2"
+    "robotjs": "^0.6.0"
   },
   "devDependencies": {
     "@electron/rebuild": "^3.2.13",
-    "@types/node": "^20.2.5",
-    "@typescript-eslint/eslint-plugin": "^5.59.9",
-    "@typescript-eslint/parser": "^5.59.9",
+    "@types/node": "^20.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
     "@vitejs/plugin-vue": "^4.2.3",
     "cross-env": "^7.0.3",
     "electron": "22.0.0",
