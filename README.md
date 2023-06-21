@@ -1,4 +1,4 @@
-# MINE-DESKTOP
+# mine-desktop
 
 一个使用 Vite + TS + Vue3.x + Electron 开发的桌面软件 👍
 
