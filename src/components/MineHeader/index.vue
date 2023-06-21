@@ -24,7 +24,7 @@
         </li>
       </ul>
     </div>
-    <div class="center">MINE-DESKTOP [biaov]</div>
+    <div class="center">mine-desktop [biaov]</div>
     <!-- 设置大小 -->
     <ul class="resize-list" @click.stop>
       <li class="item" v-for="item in resizeList" :key="item.value" @click="item.action && item.action()"><span :class="['iconfont', item.iconName]"></span></li>
