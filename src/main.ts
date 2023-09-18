@@ -3,7 +3,7 @@ import Antd from 'ant-design-vue'
 import router from './router'
 import App from './App.vue'
 import components from './components'
-import 'ant-design-vue/dist/antd.css'
+import 'ant-design-vue/dist/reset.css'
 
 const app = createApp(App)
 

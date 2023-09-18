@@ -40,7 +40,8 @@ export const useBtn = () => {
       }
     },
     {
-      type: 'danger',
+      type: 'primary',
+      danger: true,
       label: '关机',
       value: 'quit',
       icon: 'icon-Quit',
@@ -55,7 +56,8 @@ export const useBtn = () => {
       }
     },
     {
-      type: 'danger',
+      type: 'primary',
+      danger: true,
       label: '重启',
       value: 'restart',
       icon: 'icon-zhongqi',
@@ -98,7 +100,8 @@ export const useBtn = () => {
       }
     },
     {
-      type: 'danger',
+      type: 'primary',
+      danger: true,
       label: '隐藏桌面',
       value: 'visibleDesktop',
       icon: 'icon-hide',

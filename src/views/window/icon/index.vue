@@ -8,7 +8,7 @@
       <mine-button v-for="(item, index) in listData" v-bind="item" :key="index" @click="onClickItem(item)">{{ item.label }}</mine-button>
     </a-card>
   </a-space>
-  <a-modal v-model:visible="modal.visible" v-bind="{ title: modal.title, cancelText: modal.cancelText, okButtonProps: modal.okButtonProps, okText: modal.okText }" @ok="handleOk">
+  <a-modal v-model:open="modal.visible" v-bind="{ title: modal.title, cancelText: modal.cancelText, okButtonProps: modal.okButtonProps, okText: modal.okText }" @ok="handleOk">
     <a-space :size="20" direction="vertical">
       <template v-if="modal.selectValue === 'disk'">
         <a-alert message="注意：图标文件在哪个磁盘则改变哪个磁盘的图标" type="error" closable />
