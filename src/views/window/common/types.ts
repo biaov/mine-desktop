@@ -1,6 +1,7 @@
 // listData item
 export interface ListItem {
   type: string
+  danger?: boolean
   label: string
   value: string
   icon?: string

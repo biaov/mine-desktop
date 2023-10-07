@@ -1,4 +1,4 @@
 {
   "upgrade": true,
-  "reject": ["electron", "electron-builder", "typescript"]
+  "reject": ["electron", "electron-builder"]
 }

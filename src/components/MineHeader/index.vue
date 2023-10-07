@@ -37,14 +37,14 @@
       </li>
     </ul>
   </header>
-  <a-drawer v-model:visible="aboutDrawer.visible" title="关于" placement="bottom" :closable="false">
+  <a-drawer v-model:open="aboutDrawer.visible" title="关于" placement="bottom" :closable="false">
     <a-descriptions title="" bordered>
       <a-descriptions-item label="名称">{{ aboutDrawer.name }}</a-descriptions-item>
       <a-descriptions-item label="版本">{{ aboutDrawer.version }}</a-descriptions-item>
       <a-descriptions-item label="版权">Copyright (c) 2022-present biaov</a-descriptions-item>
     </a-descriptions>
   </a-drawer>
-  <a-modal v-model:visible="modal.visible" v-bind="{ title: modal.title, cancelText: modal.cancelText, okButtonProps: modal.okButtonProps, okText: modal.okText }" @ok="handleOk">
+  <a-modal v-model:open="modal.visible" v-bind="{ title: modal.title, cancelText: modal.cancelText, okButtonProps: modal.okButtonProps, okText: modal.okText }" @ok="handleOk">
     <p v-if="modal.content">{{ modal.content }}</p>
   </a-modal>
 </template>
