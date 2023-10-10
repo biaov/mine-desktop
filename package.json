@@ -59,9 +59,9 @@
   },
   "devDependencies": {
     "@electron/rebuild": "^3.3.0",
-    "@types/node": "^20.8.3",
-    "@typescript-eslint/eslint-plugin": "^6.7.4",
-    "@typescript-eslint/parser": "^6.7.4",
+    "@types/node": "^20.8.4",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
     "@vitejs/plugin-vue": "^4.4.0",
     "cross-env": "^7.0.3",
     "electron": "25.1.1",
@@ -77,6 +77,6 @@
     "typescript": "5.2.2",
     "vite": "^4.4.11",
     "vite-plugin-eslint": "^1.8.1",
-    "vue-tsc": "^1.8.16"
+    "vue-tsc": "^1.8.18"
   }
 }
