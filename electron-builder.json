@@ -32,5 +32,6 @@
     "deleteAppDataOnUninstall": false,
     "displayLanguageSelector": false,
     "perMachine": true
-  }
+  },
+  "beforePack": "./hooks/beforePack.js"
 }

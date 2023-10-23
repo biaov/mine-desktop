@@ -18,14 +18,14 @@ export const useContextmenu = ({ menuList, onClearAll, onHideDropdown }: ShareDa
       label: '最大化',
       value: 'maximize',
       action() {
-        ipcRenderer.invoke(this.value) // 渲染进程
+        ipcRenderer.invoke(this.value)
       }
     },
     {
       label: '最小化',
       value: 'minimize',
       action() {
-        ipcRenderer.invoke(this.value) // 渲染进程
+        ipcRenderer.invoke(this.value)
       }
     },
     {
@@ -33,7 +33,7 @@ export const useContextmenu = ({ menuList, onClearAll, onHideDropdown }: ShareDa
       value: 'quit',
       shortcut: 'Alt + F4',
       action() {
-        ipcRenderer.invoke(this.value) // 渲染进程
+        ipcRenderer.invoke(this.value)
       }
     }
   ])
@@ -123,7 +123,7 @@ export const useMenu = () => {
   })
   const menuList = ref<ListItem[]>([
     {
-      label: '作品集',
+      label: '其它案例',
       value: 'works',
       shortcut: 'E',
       action() {
@@ -132,10 +132,38 @@ export const useMenu = () => {
       },
       children: [
         {
-          label: 'H5 UI 组件库 - MINE-H5-UI',
+          label: '组件库 MINE-H5-UI',
           value: 'mine-h5-ui',
           action() {
-            ipcRenderer.invoke('open', 'https://mineh5ui.biaov.cn/v2/') // 渲染进程
+            ipcRenderer.invoke('open', 'https://mineh5ui.biaov.cn/v2/')
+          }
+        },
+        {
+          label: '初始化项目 create-mine',
+          value: 'create-mine',
+          action() {
+            ipcRenderer.invoke('open', 'https://github.com/biaov/create-mine')
+          }
+        },
+        {
+          label: '项目模板 project-template',
+          value: 'project-template',
+          action() {
+            ipcRenderer.invoke('open', 'https://github.com/biaov/project-template')
+          }
+        },
+        {
+          label: '生态系统 ecosystem',
+          value: 'ecosystem',
+          action() {
+            ipcRenderer.invoke('open', 'https://github.com/biaov/ecosystem')
+          }
+        },
+        {
+          label: '多命令简化 mine-auto-cli',
+          value: 'mine-auto-cli',
+          action() {
+            ipcRenderer.invoke('open', 'https://github.com/biaov/mine-auto-cli')
           }
         }
       ]
@@ -153,7 +181,7 @@ export const useMenu = () => {
           label: '百度一下',
           value: 'baidu',
           action() {
-            ipcRenderer.invoke('open', 'https://baidu.com/') // 渲染进程
+            ipcRenderer.invoke('open', 'https://baidu.com/')
           }
         }
       ]
@@ -173,7 +201,7 @@ export const useMenu = () => {
           value: 'github',
           shortcut: 'Ctrl + G',
           action() {
-            ipcRenderer.invoke('open', 'https://github.com/biaov/mine-desktop') // 渲染进程
+            ipcRenderer.invoke('open', 'https://github.com/biaov/mine-desktop')
           }
         },
         {
@@ -181,7 +209,7 @@ export const useMenu = () => {
           value: 'issues',
           shortcut: 'Ctrl + I',
           action() {
-            ipcRenderer.invoke('open', 'https://github.com/biaov/mine-desktop/issues') // 渲染进程
+            ipcRenderer.invoke('open', 'https://github.com/biaov/mine-desktop/issues')
           }
         },
         {
@@ -210,7 +238,6 @@ export const useMenu = () => {
           value: 'about',
           shortcut: 'Ctrl + A',
           action() {
-            // 渲染进程
             ipcRenderer.invoke(this.value).then((data: PackageJson) => {
               aboutDrawer.value = { ...data, visible: true }
             })
@@ -220,7 +247,9 @@ export const useMenu = () => {
     }
   ])
 
-  // 清空下拉框
+  /**
+   * 清空下拉框
+   */
   onClearAll = (list = menuList.value) => {
     list.forEach(item => {
       item.state && (item.state = false)
@@ -228,27 +257,35 @@ export const useMenu = () => {
     })
   }
 
-  // 点击菜单项
+  /**
+   * 点击菜单项
+   */
   const onMenuItem = (item: ListItem) => {
     callBack()
     item.action && item.action()
   }
 
-  // 点击菜单下拉项
+  /**
+   * 点击菜单下拉项
+   */
   const onMenuChildItem = (item: ListItem) => {
     onClearAll()
     item.action && item.action()
   }
 
-  // 隐藏下拉框
+  /**
+   * 隐藏下拉框
+   */
   const onHideDropdown = (cb: CallBackFn) => {
     callBack = cb
   }
 
-  // 点击确定
+  /**
+   * 点击确定
+   */
   const handleOk = async () => {
     if (modal.type === 'down') {
-      ipcRenderer.invoke('open', 'https://github.com/biaov/mine-desktop/releases') // 渲染进程
+      ipcRenderer.invoke('open', 'https://github.com/biaov/mine-desktop/releases')
     }
     modal.visible = false
   }
@@ -267,7 +304,7 @@ export const useResize = () => {
       iconName: 'icon-minus',
       value: 'minimize',
       action() {
-        ipcRenderer.invoke(this.value) // 渲染进程
+        ipcRenderer.invoke(this.value)
       }
     },
     {
@@ -275,7 +312,7 @@ export const useResize = () => {
       iconName: 'icon-maximize',
       value: 'maximize',
       action() {
-        ipcRenderer.invoke(this.value) // 渲染进程
+        ipcRenderer.invoke(this.value)
       }
     },
     {
@@ -283,7 +320,7 @@ export const useResize = () => {
       iconName: 'icon-Quit',
       value: 'quit',
       action() {
-        ipcRenderer.invoke(this.value) // 渲染进程
+        ipcRenderer.invoke(this.value)
       }
     }
   ])
@@ -303,15 +340,25 @@ export const useMove = (): MoveReturn => {
    */
   const onMousedown = () => {
     ipcRenderer.send('start')
-    // 表达式声明移动事件
+    /**
+     * 表达式声明移动事件
+     */
     document.onmousemove = () => {
       ipcRenderer.send('move')
     }
 
-    // 表达式声明抬起事件
+    /**
+     * 表达式声明抬起事件
+     */
     document.onmouseup = () => {
-      document.onmousemove = null // 清理上次的移动事件
-      document.onmouseup = null // 清理上次的抬起事件
+      /**
+       * 清理上次的移动事件
+       */
+      document.onmousemove = null
+      /**
+       * 清理上次的抬起事件
+       */
+      document.onmouseup = null
     }
   }
 

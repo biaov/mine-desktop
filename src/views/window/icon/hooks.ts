@@ -59,7 +59,7 @@ export const useBtn = () => {
       message.error(tips.before)
       return
     }
-    await ipcRenderer.invoke(modal.selectValue, modal.content) // 渲染进程
+    await ipcRenderer.invoke(modal.selectValue, modal.content)
     modal.visible = false
     message.success(tips.after)
   }

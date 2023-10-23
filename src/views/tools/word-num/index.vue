@@ -1,6 +1,11 @@
-<style scoped lang="less">
-@import './index.less';
-</style>
+<script lang="ts" setup>
+import { useSpeed, useKeypad, useAlert } from './hooks'
+
+const { speed, onChange, onBlur } = useSpeed()
+const { onKeyup, onWordBlur } = useKeypad({ speed })
+const { alertList } = useAlert()
+</script>
+
 <template>
   <a-card title="刷字数">
     <a-space direction="vertical" :size="20">
@@ -14,10 +19,7 @@
     </a-space>
   </a-card>
 </template>
-<script lang="ts" setup>
-import { useSpeed, useKeypad, useAlert } from './hooks'
 
-const { speed, onChange, onBlur } = useSpeed()
-const { onKeyup, onWordBlur } = useKeypad({ speed })
-const { alertList } = useAlert()
-</script>
+<style scoped lang="less">
+@import './index.less';
+</style>

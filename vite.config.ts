@@ -7,13 +7,17 @@ export const config: UserConfig = {
   base: './',
   plugins: [eslint(), vue()],
   resolve: {
-    // 路径别名
+    /**
+     * 路径别名
+     */
     alias: {
       '@': resolve(__dirname, './src')
     }
   },
   css: {
-    // 配置预编译器
+    /**
+     * 配置预编译器
+     */
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,

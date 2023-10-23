@@ -1,3 +1,10 @@
+<script lang="ts" setup>
+import { cols } from '@/config/form'
+import { useForm } from './hooks'
+
+const { formState, validateInfos, onSubmit, shortChain, onCopy } = useForm()
+</script>
+
 <template>
   <a-space direction="vertical" class="w-fill">
     <a-card title="生成短链">
@@ -16,9 +23,3 @@
     </a-card>
   </a-space>
 </template>
-<script lang="ts" setup>
-import { cols } from '@/config/form'
-import { useForm } from './hooks'
-
-const { formState, validateInfos, onSubmit, shortChain, onCopy } = useForm()
-</script>

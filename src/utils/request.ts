@@ -20,7 +20,9 @@ const removePendingAjax = (config: AxiosRequestConfig<any>, cancel?: Canceler) =
   const data = typeof config.data === 'string' ? config.data : JSON.stringify(config.data)
   const url = (config.url as string) + config.method + params + data
   const index = pendingAjax.findIndex(item => item === url)
-  // 是否已存在
+  /**
+   * 是否已存在
+   */
   if (index > -1) {
     cancel ? cancel(cacelKey) : pendingAjax.splice(index, 1)
   } else {
@@ -33,7 +35,10 @@ const removePendingAjax = (config: AxiosRequestConfig<any>, cancel?: Canceler) =
  */
 export const service = axios.create({
   baseURL,
-  timeout: 10000, // 请求超时时间
+  /**
+   * 请求超时时间
+   */
+  timeout: 10000,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -44,7 +49,9 @@ export const service = axios.create({
  */
 service.interceptors.request.use(
   config => {
-    // 添加取消 key
+    /**
+     * 添加取消 key
+     */
     config.cancelToken = new CancelToken(cancel => {
       removePendingAjax(config, cancel)
     })
@@ -55,7 +62,9 @@ service.interceptors.request.use(
   }
 )
 
-// respone 响应拦截器
+/**
+ * respone 响应拦截器
+ */
 service.interceptors.response.use(
   response => {
     removePendingAjax(response.config)

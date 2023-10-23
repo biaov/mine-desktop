@@ -1,6 +1,9 @@
 import { SidebarChildItem } from '@/components/SideBar/types'
 
-export type Lazy<T> = () => Promise<T> // 懒加载
+/**
+ * 懒加载
+ */
+export type Lazy<T> = () => Promise<T>
 export type LazyVue = Lazy<Record<string, any>>
 
 /**

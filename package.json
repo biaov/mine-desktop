@@ -1,7 +1,7 @@
 {
   "name": "mine-desktop",
   "private": false,
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "./dist/resources/app/main/index.cjs",
   "author": {
     "name": "biaov",
@@ -12,11 +12,11 @@
   "scripts": {
     "start": "npm run dev:app",
     "dev:vue": "vite",
-    "dev:app": "node script/dev",
+    "dev:app": "node scripts/dev",
     "build": "npm run remove && npm run build:vue && npm run build:app",
     "build:vue": "vue-tsc --noEmit && vite build",
-    "build:app": "node script/build",
-    "remove": "node script/remove",
+    "build:app": "node scripts/build",
+    "remove": "node scripts/remove",
     "preview": "vite preview",
     "lint": "eslint --fix ./src  --ext .vue,.ts",
     "prettier": "prettier --write '**/*.{ts,js,less,md,json,vue}'",
@@ -52,9 +52,9 @@
     "@ant-design/icons-vue": "^7.0.1",
     "ant-design-vue": "^4.0.6",
     "axios": "^1.5.1",
-    "moment": "^2.29.4",
+    "dayjs": "^1.11.10",
     "robotjs": "^0.6.0",
-    "vue": "^3.3.5",
+    "vue": "^3.3.6",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
@@ -66,7 +66,7 @@
     "cross-env": "^7.0.3",
     "electron": "25.1.1",
     "electron-builder": "24.4.0",
-    "eslint": "^8.51.0",
+    "eslint": "^8.52.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",

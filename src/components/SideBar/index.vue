@@ -1,6 +1,24 @@
-<style scoped lang="less">
-@import './index.less';
-</style>
+<script lang="ts" setup>
+import { useMenu, useMenuOpen } from './hooks'
+import type { Props, Emits } from './types'
+
+defineOptions({
+  name: 'SideBar'
+})
+
+const emit = defineEmits<Emits>()
+
+const props = withDefaults(defineProps<Props>(), {
+  collapsed: false
+})
+const { openKeys, selectedKeys, onOpenChange } = useMenuOpen()
+const { listData, isCollapsed, sidebarStyle, onCollapsed, onMenuItem } = useMenu(props, emit)
+
+defineExpose({
+  sidebarStyle
+})
+</script>
+
 <template>
   <!-- 菜单栏 -->
   <div class="side-bar" :style="sidebarStyle">
@@ -38,23 +56,7 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup>
-import { useMenu, useMenuOpen } from './hooks'
-import type { Props, Emits } from './types'
 
-defineOptions({
-  name: 'SideBar'
-})
-
-const emit = defineEmits<Emits>()
-
-const props = withDefaults(defineProps<Props>(), {
-  collapsed: false
-})
-const { openKeys, selectedKeys, onOpenChange } = useMenuOpen()
-const { listData, isCollapsed, sidebarStyle, onCollapsed, onMenuItem } = useMenu(props, emit)
-
-defineExpose({
-  sidebarStyle
-})
-</script>
+<style scoped lang="less">
+@import './index.less';
+</style>
