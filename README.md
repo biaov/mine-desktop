@@ -18,7 +18,7 @@
 
 ## 下载地址
 
-- [最新版本](https://github.com/biaov/mine-desktop/releases/tag/v1.0.7)
+- [最新版本](https://github.com/biaov/mine-desktop/releases/tag/v1.0.8)
 - [所有版本](https://github.com/biaov/mine-desktop/releases)
 
 ## 特性
