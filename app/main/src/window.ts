@@ -17,7 +17,10 @@ export const createWindow = (path?: string) => {
     webPreferences: {
       nodeIntegration: true,
       enableWebSQL: false,
-      preload: resolve(__dirname, '../preload/index.cjs') // 预加载程序
+      /**
+       * 预加载程序
+       */
+      preload: resolve(__dirname, '../preload/index.cjs')
     },
     icon: resolve(__dirname, './assets/logo.png')
   }

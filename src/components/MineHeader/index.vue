@@ -1,6 +1,15 @@
-<style scoped lang="less">
-@import './index.less';
-</style>
+<script lang="ts" setup>
+import { useContextmenu, useMenu, useResize, useMove } from './hooks'
+
+defineOptions({
+  name: 'MineHeader'
+})
+const { aboutDrawer, menuList, modal, onMenuItem, onMenuChildItem, onClearAll, onHideDropdown, handleOk } = useMenu()
+const { dropdownList, dropdownConfig, onDropdownItem, onContextmenu } = useContextmenu({ menuList, onClearAll, onHideDropdown })
+const { resizeList } = useResize()
+const { onMousedown } = useMove()
+</script>
+
 <template>
   <!-- 头部 -->
   <header class="mine-header" @contextmenu.prevent="onContextmenu" @mousedown="onMousedown">
@@ -48,14 +57,7 @@
     <p v-if="modal.content">{{ modal.content }}</p>
   </a-modal>
 </template>
-<script lang="ts" setup>
-import { useContextmenu, useMenu, useResize, useMove } from './hooks'
 
-defineOptions({
-  name: 'MineHeader'
-})
-const { aboutDrawer, menuList, modal, onMenuItem, onMenuChildItem, onClearAll, onHideDropdown, handleOk } = useMenu()
-const { dropdownList, dropdownConfig, onDropdownItem, onContextmenu } = useContextmenu({ menuList, onClearAll, onHideDropdown })
-const { resizeList } = useResize()
-const { onMousedown } = useMove()
-</script>
+<style scoped lang="less">
+@import './index.less';
+</style>

@@ -1,6 +1,9 @@
-<style scoped lang="less">
-@import './index.less';
-</style>
+<script lang="ts" setup>
+import { useBtn } from './hooks'
+
+const { listData, modal, timedShutdownKey, onModalChange, onClickItem, handleOk } = useBtn()
+</script>
+
 <template>
   <a-space direction="vertical">
     <a-alert message="点击以下按钮可能会操作你的电脑，请注意保存好未保存的文件" type="error" closable />
@@ -13,8 +16,7 @@
     <a-input v-model:value="modal.time" suffix="秒" placeholder="请输入你要定时的秒数" v-else-if="modal.selectValue === timedShutdownKey" @change="onModalChange"></a-input>
   </a-modal>
 </template>
-<script lang="ts" setup>
-import { useBtn } from './hooks'
 
-const { listData, modal, timedShutdownKey, onModalChange, onClickItem, handleOk } = useBtn()
-</script>
+<style scoped lang="less">
+@import './index.less';
+</style>

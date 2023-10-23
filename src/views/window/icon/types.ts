@@ -1,4 +1,6 @@
-// listData item
+/**
+ * listData item
+ */
 export interface ListItem {
   type: string
   label: string
@@ -8,13 +10,17 @@ export interface ListItem {
   action?: () => void
 }
 
-// okButtonProps
+/**
+ * okButtonProps
+ */
 export interface OkButtonProps {
   type: string
   danger?: boolean
 }
 
-// modal
+/**
+ * modal
+ */
 export interface Modal {
   visible: boolean
   selectValue: string

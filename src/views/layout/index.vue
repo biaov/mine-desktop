@@ -1,6 +1,11 @@
-<style scoped lang="less">
-@import './index.less';
-</style>
+<script lang="ts" setup>
+import { useRoute } from 'vue-router'
+import { useLayout } from './hooks'
+
+const { sidebarRef, isCollapsed } = useLayout()
+const rotate = useRoute()
+</script>
+
 <template>
   <!-- layout -->
   <mine-header />
@@ -12,10 +17,7 @@
     </main>
   </div>
 </template>
-<script lang="ts" setup>
-import { useRoute } from 'vue-router'
-import { useLayout } from './hooks'
 
-const { sidebarRef, isCollapsed } = useLayout()
-const rotate = useRoute()
-</script>
+<style scoped lang="less">
+@import './index.less';
+</style>

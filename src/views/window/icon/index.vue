@@ -1,6 +1,11 @@
-<style scoped lang="less">
-@import './index.less';
-</style>
+<script lang="ts" setup>
+import { useBtn } from './hooks'
+import disk01 from '../../../assets/disk01.png'
+import disk02 from '../../../assets/disk02.png'
+
+const { listData, modal, onClickItem, handleOk, onSelectFile, onSelectFolder } = useBtn()
+</script>
+
 <template>
   <a-space direction="vertical">
     <a-alert message="点击以下按钮可能会操作你的电脑，请注意保存好未保存的文件" type="error" closable />
@@ -42,10 +47,7 @@
     </a-space>
   </a-modal>
 </template>
-<script lang="ts" setup>
-import { useBtn } from './hooks'
-import disk01 from '../../../assets/disk01.png'
-import disk02 from '../../../assets/disk02.png'
 
-const { listData, modal, onClickItem, handleOk, onSelectFile, onSelectFolder } = useBtn()
-</script>
+<style scoped lang="less">
+@import './index.less';
+</style>

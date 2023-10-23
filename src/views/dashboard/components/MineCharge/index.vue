@@ -1,6 +1,3 @@
-<style scoped lang="less">
-@import './index.less';
-</style>
 <template>
   <div class="container">
     <div class="number">充电中</div>
@@ -12,3 +9,7 @@
     </div>
   </div>
 </template>
+
+<style scoped lang="less">
+@import './index.less';
+</style>

@@ -27,7 +27,7 @@ export const useBtn = () => {
       value: 'activateSystem',
       icon: 'icon-jihuo',
       action() {
-        ipcRenderer.invoke(this.value) // 渲染进程
+        ipcRenderer.invoke(this.value)
       }
     },
     {
@@ -36,7 +36,7 @@ export const useBtn = () => {
       value: 'lockScreen',
       icon: 'icon-JC_011',
       action() {
-        ipcRenderer.invoke(this.value) // 渲染进程
+        ipcRenderer.invoke(this.value)
       }
     },
     {
@@ -93,7 +93,6 @@ export const useBtn = () => {
       value: 'cancelTimedShutdown',
       icon: 'icon-shouye',
       action() {
-        // 渲染进程
         ipcRenderer.invoke(this.value).then(() => {
           message.success('已取消')
         })
@@ -106,7 +105,6 @@ export const useBtn = () => {
       value: 'visibleDesktop',
       icon: 'icon-hide',
       action() {
-        // 渲染进程
         ipcRenderer.invoke(this.value, { type: 'hide' }).then(() => {
           message.success('已隐藏')
         })
@@ -118,7 +116,6 @@ export const useBtn = () => {
       value: 'visibleDesktop',
       icon: 'icon-show',
       action() {
-        // 渲染进程
         ipcRenderer.invoke(this.value, { type: 'show' }).then(() => {
           message.success('已显示')
         })
@@ -130,11 +127,13 @@ export const useBtn = () => {
   }
 
   const handleOk = async () => {
-    // 定时关机
+    /**
+     * 定时关机
+     */
     if (modal.selectValue === timedShutdownKey) {
-      await ipcRenderer.invoke(modal.selectValue, modal.time) // 渲染进程
+      await ipcRenderer.invoke(modal.selectValue, modal.time)
     } else {
-      await ipcRenderer.invoke(modal.selectValue) // 渲染进程
+      await ipcRenderer.invoke(modal.selectValue)
     }
     modal.visible = false
     message.success('设置成功')
