@@ -38,25 +38,25 @@
 
 ## 安装依赖
 
-```Basic
+```sh
 npm i
 ```
 
 ## 运行项目
 
-```Basic
+```sh
 npm start
 ```
 
 - 如果遇到 `NODE_MODULE_VERSION` 不一致的问题，则运行以下命令解决
 
-```Basic
+```sh
 npm run rebuild
 ```
 
 ## 打包项目
 
-```Basic
+```sh
 npm run build
 ```
 
@@ -70,6 +70,7 @@ npm run build
 │   │   ├── main -------------------- 主进程
 │   │   ├── preload ----------------- 预加载
 │   │   ├── vite.config.ts ---------- Vite 配置
+│   ├── hooks ----------------------- 打包钩子
 │   ├── public ---------------------- 静态资源
 │   ├── scripts --------------------- 脚本
 │   ├── src ------------------------- Vue 项目
