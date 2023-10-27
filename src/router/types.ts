@@ -1,4 +1,4 @@
-import { SidebarChildItem } from '@/components/SideBar/types'
+import type { SidebarChildItem } from '@/components/SideBar/types'
 
 /**
  * 懒加载

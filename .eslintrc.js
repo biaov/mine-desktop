@@ -1,4 +1,10 @@
 /**
+ * 生产环境报错
+ * 开发环境关闭
+ */
+const developmentOff = process.env.NODE_ENV === 'production' ? 'error' : 'off'
+
+/**
  * 配置信息
  */
 const config = {
@@ -28,7 +34,7 @@ const config = {
       }
     },
     {
-      files: ['**/*.vue', '**/types.ts'],
+      files: ['**/types.ts'],
       rules: {
         /**
          * 禁止未使用的变量, ts 变量
@@ -90,7 +96,23 @@ const config = {
     /**
      * 禁止多个单词名称
      */
-    'vue/multi-word-component-names': 'off'
+    'vue/multi-word-component-names': 'off',
+    /**
+     * 禁止未使用的变量
+     */
+    'no-unused-vars': developmentOff,
+    /**
+     * 禁止 console
+     */
+    'no-console': developmentOff,
+    /**
+     * 应在异步箭头函数的末尾返回一个值
+     */
+    'consistent-return': 'off',
+    /**
+     * 禁止 switch...case 语句中没有 default 语句
+     */
+    'default-case': 'off'
   }
 }
 

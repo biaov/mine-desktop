@@ -1,6 +1,6 @@
 import { ref, reactive, onMounted } from 'vue'
 import { useRenderer } from '@/composables/useBridge'
-import { CallBackFn, ClearAllFn, ListItem, ShareData, DropdownConfig, ContextmenuReturn, MoveReturn, PackageJson, Modal } from './types'
+import type { CallBackFn, ClearAllFn, ListItem, ShareData, DropdownConfig, ContextmenuReturn, MoveReturn, PackageJson, Modal } from './types'
 import { newVersionApi } from '@/api/public'
 
 /**

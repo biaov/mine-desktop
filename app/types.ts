@@ -1,4 +1,4 @@
-import { IpcMain, BrowserWindow } from 'electron'
+import { IpcMain, BrowserWindow, IpcMainInvokeEvent } from 'electron'
 
 /**
  * handleChannels item
@@ -54,4 +54,21 @@ export interface WordNumActionParam {
  */
 export interface VisibleDesktopParam {
   type: 'show' | 'hide'
+}
+
+/**
+ * openAppAction 类型
+ */
+export namespace OpenAppAction {
+  export interface Option {
+    name: string
+    path: string
+  }
+}
+
+/**
+ * ActionEvent
+ */
+export interface ActionEvent<T = never, R = void> {
+  (e: IpcMainInvokeEvent, option: T): R
 }

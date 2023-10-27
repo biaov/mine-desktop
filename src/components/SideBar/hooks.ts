@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import routes from '@/router/routes'
 import { RouteItem } from '@/router/types'
-import { Props, Emits } from './types'
+import type { Props, Emits } from './types'
 
 export const useMenu = (props: Readonly<Required<Props>>, emit: Emits) => {
   const router = useRouter()

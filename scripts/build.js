@@ -4,10 +4,8 @@ const { resolve } = require('path')
 const { copyAssets } = require('./hooks')
 
 !(async () => {
-  const viteConfigPaths = ['preload', 'main'].map(path => resolve(__dirname, `../app/${path}/vite.config.ts`))
   try {
-    const tasks = viteConfigPaths.map(async configFile => await createCompile({ configFile }))
-    await Promise.all(tasks)
+    await createCompile({ configFile: resolve(__dirname, '../app/vite.config.ts') })
     copyAssets()
   } catch (e) {
     console.log(e)

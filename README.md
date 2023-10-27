@@ -3,38 +3,39 @@
 一个使用 Vite + TS + Vue3.x + Electron 开发的桌面软件 👍
 
 <h2 align="center">
-  <a href="https://github.com/biaov/mine-desktop/releases/tag/v1.0.8"><img src="https://img.shields.io/badge/version-1.0.8-blue?logo=npm" /></a>
+  <a href="https://github.com/biaov/mine-desktop/releases/tag/v1.0.9"><img src="https://img.shields.io/badge/version-1.0.9-blue?logo=npm" /></a>
   <a href="https://github.com/biaov/mine-desktop/blob/main/LICENSE"><img src="https://img.shields.io/github/license/biaov/mine-desktop.svg?logo=Unlicense" /></a>
   <a href="https://github.com/biaov/mine-desktop/blob/main/.eslintrc.js"><img src="https://img.shields.io/badge/eslint-prettier-blue?logo=eslint" /></a>
 </h2>
 
+## 下载地址
+
+- [x] [最新版本](https://github.com/biaov/mine-desktop/releases/tag/v1.0.9)
+- [x] [所有版本](https://github.com/biaov/mine-desktop/releases)
+
 ## 支持环境
 
-- windows
+- `windows`
 
 ## 技术栈
 
 `Vite` + `TypeScript` + `Vue3.x` + `Electron` + `Eslint` + `Less` + `NodeJs`
 
-## 下载地址
-
-- [最新版本](https://github.com/biaov/mine-desktop/releases/tag/v1.0.8)
-- [所有版本](https://github.com/biaov/mine-desktop/releases)
-
 ## 特性
 
-- 激活系统
-- 锁屏
-- 关机
-- 重启
-- 定时关机
-- 取消定时关机
-- 设置磁盘图标
-- 重置磁盘图标
-- 屏幕显示
-- 输入法刷字数
-- 电脑桌面的显示和隐藏
-- 生成短链
+- [x] 激活系统
+- [x] 锁屏
+- [x] 关机
+- [x] 重启
+- [x] 定时关机
+- [x] 取消定时关机
+- [x] 设置磁盘图标
+- [x] 重置磁盘图标
+- [x] 屏幕显示
+- [x] 输入法刷字数
+- [x] 电脑桌面的显示和隐藏
+- [x] 生成短链
+- [x] 打开应用程序
 
 ## 安装依赖
 
@@ -48,7 +49,7 @@ npm i
 npm start
 ```
 
-- 如果遇到 `NODE_MODULE_VERSION` 不一致的问题，则运行以下命令解决
+- **如果遇到 `NODE_MODULE_VERSION` 不一致的问题，则运行以下命令解决**
 
 ```sh
 npm run rebuild
@@ -69,7 +70,7 @@ npm run build
 │   │   ├── assets ------------------ 静态资源
 │   │   ├── main -------------------- 主进程
 │   │   ├── preload ----------------- 预加载
-│   │   ├── vite.config.ts ---------- Vite 配置
+│   │   └── vite.config.ts ---------- Vite 配置
 │   ├── hooks ----------------------- 打包钩子
 │   ├── public ---------------------- 静态资源
 │   ├── scripts --------------------- 脚本
@@ -85,7 +86,7 @@ npm run build
 │   │   ├── views ------------------- 页面
 │   │   ├── App.vue ----------------- 根组件
 │   │   ├── env.d.ts ---------------- 环境变量类型
-│   │   ├── main.ts ----------------- 入口文件
+│   │   └── main.ts ----------------- 入口文件
 │   ├── .editorconfig --------------- 编辑器配置
 │   ├── .eslintignore --------------- Eslint 忽略文件
 │   ├── .eslintrc.js ---------------- Eslint 配置
@@ -101,7 +102,7 @@ npm run build
 │   ├── package.json ---------------- 项目配置
 │   ├── README.md ------------------- 项目说明
 │   ├── tsconfig.json --------------- TypeScript 配置
-│   ├── vite.config.ts -------------- Vite 配置
+└   └── vite.config.ts -------------- Vite 配置
 ```
 
 ## 依赖解析

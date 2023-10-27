@@ -1,5 +1,5 @@
 import { service } from '@/utils/request'
-import { PagingResponse } from './types'
+import type { PagingResponse } from './types'
 
 export const restful = (path: string) => ({
   paging: (query = {}) => service.get(path, { params: query }) as Promise<PagingResponse>,

@@ -6,6 +6,76 @@
   "description": "关于 mine-desktop 项目的图标",
   "glyphs": [
     {
+      "icon_id": "1347471",
+      "name": "firefox",
+      "font_class": "firefox",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "3876386",
+      "name": "adobephotoshop",
+      "font_class": "adobephotoshop",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "3994518",
+      "name": "hackerrank",
+      "font_class": "hackerrank",
+      "unicode": "e696",
+      "unicode_decimal": 59030
+    },
+    {
+      "icon_id": "4765978",
+      "name": "calculator",
+      "font_class": "calculator",
+      "unicode": "e799",
+      "unicode_decimal": 59289
+    },
+    {
+      "icon_id": "13304144",
+      "name": "vscode",
+      "font_class": "vscode",
+      "unicode": "e6b8",
+      "unicode_decimal": 59064
+    },
+    {
+      "icon_id": "15378101",
+      "name": "adobeillustrator",
+      "font_class": "adobeillustrator",
+      "unicode": "eb34",
+      "unicode_decimal": 60212
+    },
+    {
+      "icon_id": "15378703",
+      "name": "postman",
+      "font_class": "postman",
+      "unicode": "ec5d",
+      "unicode_decimal": 60509
+    },
+    {
+      "icon_id": "15643736",
+      "name": "企业微信",
+      "font_class": "qiyeweixin",
+      "unicode": "e6af",
+      "unicode_decimal": 59055
+    },
+    {
+      "icon_id": "23077567",
+      "name": "userPrinergy",
+      "font_class": "userPrinergy",
+      "unicode": "e6b0",
+      "unicode_decimal": 59056
+    },
+    {
+      "icon_id": "24891758",
+      "name": "Microsoft-Store",
+      "font_class": "Microsoft-Store",
+      "unicode": "e882",
+      "unicode_decimal": 59522
+    },
+    {
       "icon_id": "5127359",
       "name": "hide",
       "font_class": "hide",

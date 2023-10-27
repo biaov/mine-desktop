@@ -83,6 +83,8 @@ each(@imgTypes, {
 @spaces: {
   0: 0px;
   8: 8px;
+  10: 10px;
+  20: 20px;
 };
 
 each(@spaces,{
@@ -140,6 +142,7 @@ each(@spaces,{
 
 @widths: {
   fill: 100%;
+  300: 300px;
 };
 
 each(@widths,{
@@ -147,3 +150,7 @@ each(@widths,{
     width: @value !important;
   }
 });
+
+.relative {
+  position: relative;
+}

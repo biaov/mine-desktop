@@ -20,8 +20,8 @@ const { onClick } = useHandle(emit)
   <!-- 按钮 -->
   <a-button :type="type" @click="onClick">
     <template #icon>
-      <ant-icon :name="antIcon" v-if="antIcon"></ant-icon>
-      <span class="iconfont" :class="icon" v-else-if="icon"></span>
+      <ant-icon v-if="antIcon" :name="antIcon" />
+      <span v-else-if="icon" class="iconfont" :class="icon"></span>
     </template>
     <slot></slot>
   </a-button>

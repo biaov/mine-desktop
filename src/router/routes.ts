@@ -1,4 +1,4 @@
-import { LazyVue, RouteItem } from './types'
+import type { LazyVue, RouteItem } from './types'
 
 const templateComponent: LazyVue = () => import('../views/layout/template.vue')
 const modules = import.meta.glob('../views/**/*.vue')
@@ -35,6 +35,13 @@ const routes: RouteItem[] = [
         name: 'window-icon',
         meta: {
           title: '更换图标'
+        }
+      },
+      {
+        path: 'open-app',
+        name: 'icon-JC_011',
+        meta: {
+          title: '打开软件'
         }
       }
     ]

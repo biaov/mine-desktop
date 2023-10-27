@@ -5,8 +5,7 @@
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
+
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
@@ -16,9 +15,19 @@
     "types": ["vite/client", "node"],
     "skipLibCheck": true,
     "baseUrl": "./",
+
+    /* 路径别名 */
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./src/*"],
+      "~/*": ["./app/*"]
+    },
+
+    /* 解析方式 */
+    "moduleResolution": "Bundler",
+
+    /* lint */
+    "strict": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts", "app/**/*.ts"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "app/**/*.ts"],
+  "exclude": ["node_modules"]
 }
