@@ -1,8 +1,8 @@
 {
   "name": "mine-desktop",
   "private": false,
-  "version": "1.0.8",
-  "main": "./dist/resources/app/main/index.cjs",
+  "version": "1.1.0",
+  "main": "./dist/resources/app/main.cjs",
   "author": {
     "name": "biaov",
     "email": "biaov@qq.com",
@@ -13,15 +13,15 @@
     "start": "npm run dev:app",
     "dev:vue": "vite",
     "dev:app": "node scripts/dev",
-    "build": "npm run remove && npm run build:vue && npm run build:app",
-    "build:vue": "vue-tsc --noEmit && vite build",
+    "build": "npm run build:vue && npm run build:app",
+    "build:vue": "vite build",
     "build:app": "node scripts/build",
-    "remove": "node scripts/remove",
     "preview": "vite preview",
     "lint": "eslint --fix ./src  --ext .vue,.ts",
     "prettier": "prettier --write '**/*.{ts,js,less,md,json,vue}'",
     "ncu": "ncu --configFileName .ncurc.json && npm i",
-    "rebuild": "electron-rebuild -t prod,optional,dev"
+    "rebuild": "electron-rebuild -t prod,optional,dev",
+    "test": "electron . -enable-webgl --no-sandbox --disable-dev-shm-usage"
   },
   "engines": {
     "node": ">=12"
@@ -54,14 +54,14 @@
     "axios": "^1.5.1",
     "dayjs": "^1.11.10",
     "robotjs": "^0.6.0",
-    "vue": "^3.3.6",
+    "vue": "^3.3.7",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@electron/rebuild": "^3.3.0",
-    "@types/node": "^20.8.7",
-    "@typescript-eslint/eslint-plugin": "^6.8.0",
-    "@typescript-eslint/parser": "^6.8.0",
+    "@types/node": "^20.8.9",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
     "@vitejs/plugin-vue": "^4.4.0",
     "cross-env": "^7.0.3",
     "electron": "25.1.1",
@@ -69,14 +69,14 @@
     "eslint": "^8.52.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-prettier": "^5.0.1",
-    "eslint-plugin-vue": "^9.17.0",
+    "eslint-plugin-vue": "^9.18.0",
     "less": "^4.2.0",
     "prettier": "^3.0.3",
     "typescript": "5.2.2",
     "vite": "^4.5.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vue-tsc": "^1.8.19"
+    "vue-tsc": "^1.8.21"
   }
 }

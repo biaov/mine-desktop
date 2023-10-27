@@ -1,4 +1,4 @@
-import { GlobalThisElectron } from './types'
+import type { GlobalThisElectron } from './types'
 
 const { electron } = globalThis as GlobalThisElectron
 

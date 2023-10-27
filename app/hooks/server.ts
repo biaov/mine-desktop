@@ -1,6 +1,10 @@
-import { isDevelopment } from './env'
-import { CreateServeParam } from './types'
+import { resolve } from 'path'
+import { isDevelopment } from '~/config/env'
+import type { CreateServeParam } from '~/types'
 
+/**
+ * 创建服务
+ */
 export const createServer = ({ window, path = '' }: CreateServeParam) => {
   /**
    * 页面路径
@@ -18,7 +22,7 @@ export const createServer = ({ window, path = '' }: CreateServeParam) => {
     /**
      * 打包
      */
-    pageUrl = new URL('../../resources/vue/index.html', `file://${__dirname}`).toString()
+    pageUrl = new URL(resolve(__dirname, '../vue/index.html'), `file://${__dirname}`).toString()
   }
   window.loadURL(pageUrl + path)
 }

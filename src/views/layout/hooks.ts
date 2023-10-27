@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { SideBarExpose } from '@/components/SideBar/types'
+import type { SideBarExpose } from '@/components/SideBar/types'
 
 export const useLayout = () => {
   const sidebarRef = ref<SideBarExpose>()

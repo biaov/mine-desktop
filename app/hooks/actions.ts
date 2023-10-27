@@ -1,11 +1,11 @@
-import { app, screen, Point, shell, IpcMainInvokeEvent, BrowserWindow, dialog, OpenDialogOptions, desktopCapturer, DesktopCapturerSource, clipboard } from 'electron'
-import { exec } from 'child_process'
-import { copyFileSync, writeFileSync, rmSync } from 'fs'
-import { resolve } from 'path'
+import { app, screen, Point, shell, BrowserWindow, dialog, OpenDialogOptions, desktopCapturer, DesktopCapturerSource, clipboard, ipcMain } from 'electron'
+import { exec, execSync } from 'child_process'
+import { copyFileSync, writeFileSync, rmSync, existsSync, mkdirSync } from 'fs'
+import { resolve, join } from 'path'
 import robot from 'robotjs'
-import packageJson from '../../../package.json'
-import { AboutActionReturn, FnReturn, OpenWindowActionParam, WordNumActionParam, VisibleDesktopParam } from './types'
-import { isUnDevelopment } from './env'
+import packageJson from '../../package.json'
+import { isUnDevelopment } from '~/config/env'
+import type { AboutActionReturn, FnReturn, OpenWindowActionParam, WordNumActionParam, VisibleDesktopParam, OpenAppAction, ActionEvent } from '~/types'
 import { createWindow } from './window'
 
 /**
@@ -25,7 +25,7 @@ export const useActions = (): Record<string, FnReturn> => {
   /**
    * 打开网页
    */
-  const openAction = (e: IpcMainInvokeEvent, url: string) => {
+  const openAction: ActionEvent<string> = (_, url: string) => {
     shell.openExternal(url)
   }
 
@@ -122,7 +122,7 @@ export const useActions = (): Record<string, FnReturn> => {
   /**
    * 定时关机
    */
-  const timedShutdownAction = (e: IpcMainInvokeEvent, time: number) => {
+  const timedShutdownAction: ActionEvent<number> = (_, time: number) => {
     exec(`shutdown /s /t ${time}`)
   }
 
@@ -136,7 +136,7 @@ export const useActions = (): Record<string, FnReturn> => {
   /**
    * 选择文件
    */
-  const selectFileAction = async (e: IpcMainInvokeEvent, { title, filters }: OpenDialogOptions) => {
+  const selectFileAction: ActionEvent<OpenDialogOptions> = async (_, { title, filters }: OpenDialogOptions) => {
     const { canceled, filePaths } = await dialog.showOpenDialog({
       title,
       filters,
@@ -149,7 +149,7 @@ export const useActions = (): Record<string, FnReturn> => {
   /**
    * 选择文件夹
    */
-  const selectFolderAction = async (e: IpcMainInvokeEvent, { title }: OpenDialogOptions) => {
+  const selectFolderAction: ActionEvent<OpenDialogOptions, Promise<string | undefined>> = async (_, { title }) => {
     const { canceled, filePaths } = await dialog.showOpenDialog({
       title,
       properties: ['openDirectory']
@@ -161,7 +161,7 @@ export const useActions = (): Record<string, FnReturn> => {
   /**
    * 磁盘图标
    */
-  const diskAction = (e: IpcMainInvokeEvent, path: string) => {
+  const diskAction: ActionEvent<string> = (_, path) => {
     const rootPath = `${path.slice(0, 2)}/`
     copyFileSync(path, `${rootPath}custom-disk.ico`)
     writeFileSync(`${rootPath}disk.inf`, `[autorun]icon=custom-disk.ico`)
@@ -170,7 +170,7 @@ export const useActions = (): Record<string, FnReturn> => {
   /**
    * 重置磁盘图标
    */
-  const diskResetAction = (e: IpcMainInvokeEvent, path: string) => {
+  const diskResetAction: ActionEvent<string> = (_, path) => {
     const rootPath = `${path.slice(0, 2)}/`
     rmSync(`${rootPath}custom-disk.ico`)
     rmSync(`${rootPath}disk.inf`)
@@ -181,7 +181,7 @@ export const useActions = (): Record<string, FnReturn> => {
    * 激活系统
    */
   const activateSystemAction = () => {
-    exec(`start ${resolve(__dirname, './assets/activateSystem.bat')}`)
+    exec(`start ${resolve(__dirname, '../assets/activateSystem.bat')}`)
   }
 
   /**
@@ -192,7 +192,7 @@ export const useActions = (): Record<string, FnReturn> => {
   /**
    * 打开子窗口
    */
-  const openWindowAction = (e: IpcMainInvokeEvent, { path }: OpenWindowActionParam) => {
+  const openWindowAction: ActionEvent<OpenWindowActionParam> = (_, { path }) => {
     createWindow(path)
   }
 
@@ -212,7 +212,7 @@ export const useActions = (): Record<string, FnReturn> => {
   /**
    * 键盘输入字数
    */
-  const wordNumAction = (e: IpcMainInvokeEvent, { type, speed = 1000 }: WordNumActionParam) => {
+  const wordNumAction: ActionEvent<WordNumActionParam> = (_, { type, speed = 1000 }) => {
     switch (type) {
       case 'start':
         wordNumStatus = true
@@ -227,7 +227,7 @@ export const useActions = (): Record<string, FnReturn> => {
   /**
    * 显示隐藏桌面
    */
-  const visibleDesktopAction = (e: IpcMainInvokeEvent, { type }: VisibleDesktopParam) => {
+  const visibleDesktopAction: ActionEvent<VisibleDesktopParam> = (_, { type }) => {
     switch (type) {
       case 'show':
         exec(`explorer`)
@@ -241,8 +241,23 @@ export const useActions = (): Record<string, FnReturn> => {
   /**
    * 复制到剪切板
    */
-  const copyAction = (e: IpcMainInvokeEvent, content: string) => {
+  const copyAction: ActionEvent<string> = (_, content: string) => {
     clipboard.writeText(content, 'clipboard')
+  }
+
+  /**
+   * 打开软件
+   * 这里使用的是 .reg 文件, 也可以使用 electron-regedit 来写入注册表
+   */
+  const openAppAction: ActionEvent<OpenAppAction.Option> = (_, { name, path }) => {
+    const tempsPath = join(process.cwd(), 'temps')
+    !existsSync(tempsPath) && mkdirSync(tempsPath)
+    const dirPrefix = `[HKEY_CLASSES_ROOT\\${name}`
+    const regPath = join(tempsPath, `${name}.reg`)
+    writeFileSync(regPath, `Windows Registry Editor Version 5.00\n${dirPrefix}]\n@="${name} Protocol"\n"URL Protocol"=""\n${dirPrefix}\\shell\\open\\command]\n@="\\\"${path}\\\""\n`, {
+      encoding: 'utf-8'
+    })
+    execSync(regPath)
   }
 
   return {
@@ -268,6 +283,7 @@ export const useActions = (): Record<string, FnReturn> => {
     openWindowAction,
     wordNumAction,
     visibleDesktopAction,
-    copyAction
+    copyAction,
+    openAppAction
   }
 }

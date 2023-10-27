@@ -5,18 +5,30 @@ const config: UserConfig = {
   root: __dirname,
   resolve: {
     alias: {
-      '@': './src'
+      '@': resolve(__dirname, './src'),
+      '~': resolve(__dirname, './')
     }
   },
   build: {
+    watch:
+      process.env.NODE_ENV === 'development'
+        ? {
+            clearScreen: false,
+            exclude: [/node_modules/],
+            buildDelay: 2000
+          }
+        : null,
     target: 'esnext',
     outDir: resolve(__dirname, '../dist/resources/app'),
-    assetsDir: './',
     lib: {
       entry: '',
       formats: ['cjs']
     },
     rollupOptions: {
+      input: {
+        main: resolve(__dirname, './main.ts'),
+        preload: resolve(__dirname, './preload.ts')
+      },
       external: ['electron', 'path', 'child_process', 'fs', 'robotjs'],
       output: {
         entryFileNames: '[name].cjs'

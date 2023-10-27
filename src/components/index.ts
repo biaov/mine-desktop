@@ -1,5 +1,5 @@
 import { Component } from 'vue'
-import { Module } from './types'
+import type { Module } from './types'
 
 const components: Record<string, Module> = import.meta.glob('./*/index.ts', { eager: true })
 const newComponent: Record<string, Component> = {}

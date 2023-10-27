@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { useRenderer } from '@/composables/useBridge'
-import { UseKeypadShareParam } from './types'
+import type { UseKeypadShareParam } from './types'
 
 /**
  * 速度操作

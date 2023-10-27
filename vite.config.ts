@@ -11,7 +11,8 @@ export const config: UserConfig = {
      * 路径别名
      */
     alias: {
-      '@': resolve(__dirname, './src')
+      '@': resolve(__dirname, './src'),
+      '~': resolve(__dirname, './app')
     }
   },
   css: {
