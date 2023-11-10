@@ -1,7 +1,7 @@
 {
   "name": "mine-desktop",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "./dist/resources/app/main.cjs",
   "author": {
     "name": "biaov",
@@ -11,10 +11,10 @@
   "description": "一个使用 Vite + TS + Vue3.x + Electron 开发的桌面软件 👍",
   "scripts": {
     "start": "npm run dev:app",
-    "dev:vue": "vite",
+    "dev:web": "vite",
     "dev:app": "node scripts/dev",
-    "build": "npm run build:vue && npm run build:app",
-    "build:vue": "vite build",
+    "build": "npm run build:web && npm run build:app",
+    "build:web": "vite build",
     "build:app": "node scripts/build",
     "preview": "vite preview",
     "lint": "eslint --fix ./src  --ext .vue,.ts",
@@ -51,32 +51,32 @@
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
     "ant-design-vue": "^4.0.6",
-    "axios": "^1.5.1",
+    "axios": "^1.6.1",
     "dayjs": "^1.11.10",
     "robotjs": "^0.6.0",
-    "vue": "^3.3.7",
+    "vue": "^3.3.8",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@electron/rebuild": "^3.3.0",
-    "@types/node": "^20.8.9",
-    "@typescript-eslint/eslint-plugin": "^6.9.0",
-    "@typescript-eslint/parser": "^6.9.0",
-    "@vitejs/plugin-vue": "^4.4.0",
+    "@types/node": "^20.9.0",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "@vitejs/plugin-vue": "^4.4.1",
     "cross-env": "^7.0.3",
     "electron": "25.1.1",
     "electron-builder": "24.4.0",
-    "eslint": "^8.52.0",
+    "eslint": "^8.53.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-prettier": "^5.0.1",
-    "eslint-plugin-vue": "^9.18.0",
+    "eslint-plugin-vue": "^9.18.1",
     "less": "^4.2.0",
     "prettier": "^3.0.3",
     "typescript": "5.2.2",
     "vite": "^4.5.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vue-tsc": "^1.8.21"
+    "vue-tsc": "^1.8.22"
   }
 }
