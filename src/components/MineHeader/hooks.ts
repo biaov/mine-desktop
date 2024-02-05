@@ -123,7 +123,7 @@ export const useMenu = () => {
   })
   const menuList = ref<ListItem[]>([
     {
-      label: '其它案例',
+      label: '案例集锦',
       value: 'works',
       shortcut: 'E',
       action() {
@@ -164,6 +164,13 @@ export const useMenu = () => {
           value: 'mine-auto-cli',
           action() {
             ipcRenderer.invoke('open', 'https://github.com/biaov/mine-auto-cli')
+          }
+        },
+        {
+          label: '特效集锦 effects',
+          value: 'effects',
+          action() {
+            ipcRenderer.invoke('open', 'https://github.com/biaov/effects')
           }
         }
       ]
