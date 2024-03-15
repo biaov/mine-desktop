@@ -12,13 +12,12 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "chcp 65001 && vite",
-    "build": "vue-tsc && vite build && electron-builder",
+    "build": "vue-tsc && vite build && electron-builder -c build/electron-builder.json",
     "preview": "vite preview",
     "prettier": "prettier --write '**/*.{ts,js,less,md,json,vue}'",
     "ncu": "ncu --configFileName .ncurc.json && npm i",
     "test": "electron-builder -h"
   },
-  "type": "module",
   "engines": {
     "node": ">=20"
   },

@@ -9,7 +9,7 @@ import packageJson from '../package.json'
 export const removeReleaseDir = (): PluginOption => ({
   name: 'vite:remove-release-dir',
   buildStart() {
-    const outDir = resolve(__dirname, `../dist/release/${packageJson.version}}`)
+    const outDir = resolve(__dirname, `../dist/release/${packageJson.version}`)
     existsSync(outDir) && rmdirSync(outDir, { recursive: true })
   }
 })
