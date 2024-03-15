@@ -53,11 +53,26 @@ const { onMousedown } = useMove()
       <a-descriptions-item label="版权">Copyright (c) 2022-present biaov</a-descriptions-item>
     </a-descriptions>
   </a-drawer>
-  <a-modal v-model:open="modal.visible" v-bind="{ title: modal.title, cancelText: modal.cancelText, okButtonProps: modal.okButtonProps, okText: modal.okText }" @ok="handleOk">
+  <a-modal
+    v-model:open="modal.visible"
+    v-bind="{
+      title: modal.title,
+      cancelText: modal.cancelText,
+      okButtonProps: modal.okButtonProps,
+      okText: modal.okText,
+      footer: modal.footer,
+      closable: modal.closable,
+      maskClosable: modal.maskClosable
+    }"
+    @ok="handleOk"
+  >
     <p v-if="modal.content">{{ modal.content }}</p>
     <template v-else>
-      <a-alert type="warning" message="关闭弹窗后台会下载！" closable />
-      <a-progress :percent="modal.percent" />
+      <a-row justify="center">
+        <a-col>
+          <a-progress type="circle" :percent="modal.percent" />
+        </a-col>
+      </a-row>
     </template>
   </a-modal>
 </template>

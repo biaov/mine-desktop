@@ -121,7 +121,11 @@ export const useMenu = () => {
     cancelText: '',
     okButtonProps: { type: 'primary' },
     okText: '',
-    content: ''
+    content: '',
+    footer: undefined,
+    closable: true,
+    percent: 0,
+    maskClosable: true
   })
   const menuList = ref<ListItem[]>([
     {
@@ -252,13 +256,14 @@ export const useMenu = () => {
         message.error(JSON.stringify(data))
         break
       case updatesEnums.progress:
-        modal.visible = true
+        modal.percent = +data.percent.toFixed(2)
+        modal.closable = false
         modal.title = '下载进度条'
+        modal.footer = null
         modal.type = 'progress'
-        modal.percent = data.percent
-        modal.cancelText = '取消'
-        modal.okText = '确定'
         modal.content = ''
+        modal.visible = true
+        modal.maskClosable = false
         break
       case updatesEnums.available:
         Modal.confirm({
