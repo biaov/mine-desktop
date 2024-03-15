@@ -1,4 +1,16 @@
 /**
+ * 检查更新回调函数
+ */
+interface CheckForUpdateCallback {
+  (value: { type: string; data?: any }): void
+}
+
+/**
  * Electron
  */
-export type GlobalThisElectron = typeof globalThis & { electron: any }
+export interface GlobalThisElectron extends Window {
+  electron: {
+    ipcRenderer: import('electron').IpcRenderer
+    onCheckForUpdate: (value: CheckForUpdateCallback) => void
+  }
+}

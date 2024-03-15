@@ -1,33 +1,34 @@
 {
   "compilerOptions": {
-    "incremental": false,
-    "composite": false,
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
-
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "lib": ["esnext", "DOM", "DOM.Iterable"],
     "types": ["vite/client", "node"],
     "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
     "baseUrl": "./",
 
     /* 路径别名 */
     "paths": {
       "@/*": ["./src/*"],
-      "~/*": ["./app/*"]
-    },
-
-    /* 解析方式 */
-    "moduleResolution": "Bundler",
-
-    /* lint */
-    "strict": true
+      "~/*": ["./electron/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "app/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "electron"],
   "exclude": ["node_modules"]
 }

@@ -1,7 +1,8 @@
 import { ref, reactive, onMounted } from 'vue'
+import { Modal, message } from 'ant-design-vue'
 import { useRenderer } from '@/composables/useBridge'
-import type { CallBackFn, ClearAllFn, ListItem, ShareData, DropdownConfig, ContextmenuReturn, MoveReturn, PackageJson, Modal } from './types'
-import { newVersionApi } from '@/api/public'
+import { updatesEnums } from '@/enums/icp'
+import type { CallBackFn, ClearAllFn, ListItem, ShareData, DropdownConfig, ContextmenuReturn, MoveReturn, PackageJson, ModalReactive } from './types'
 
 /**
  * 鼠标右击
@@ -10,6 +11,7 @@ import { newVersionApi } from '@/api/public'
  */
 export const useContextmenu = ({ menuList, onClearAll, onHideDropdown }: ShareData): ContextmenuReturn => {
   const { ipcRenderer } = useRenderer()
+
   /**
    * 下拉列表
    */
@@ -108,11 +110,11 @@ export const useContextmenu = ({ menuList, onClearAll, onHideDropdown }: ShareDa
  * 菜单
  */
 export const useMenu = () => {
-  const { ipcRenderer } = useRenderer()
+  const { ipcRenderer, onCheckForUpdate } = useRenderer()
   let callBack: CallBackFn
   let onClearAll: ClearAllFn
   const aboutDrawer = ref({ visible: false, name: '', version: '' })
-  const modal = reactive<Modal>({
+  const modal = reactive<ModalReactive>({
     visible: false,
     title: '提示',
     type: '',
@@ -224,20 +226,7 @@ export const useMenu = () => {
           value: 'checkUpdate',
           shortcut: 'Ctrl + U',
           action() {
-            Promise.all([ipcRenderer.invoke(this.value), newVersionApi.get()]).then(([localVersion, { version }]: [string, any]) => {
-              modal.visible = true
-              if (localVersion === version) {
-                modal.type = 'noDown'
-                modal.cancelText = '取消'
-                modal.okText = '确定'
-                modal.content = `当前已是最新版本 v${version}`
-              } else {
-                modal.type = 'down'
-                modal.cancelText = '暂不下载'
-                modal.okText = '去下载'
-                modal.content = `发现最新版本 v${version}，是否去下载？体验更多功能`
-              }
-            })
+            ipcRenderer.invoke('check-for-updates', updatesEnums.check)
           }
         },
         {
@@ -254,6 +243,61 @@ export const useMenu = () => {
     }
   ])
 
+  /**
+   * 检查更新回传
+   */
+  onCheckForUpdate(({ type, data }) => {
+    switch (type) {
+      case updatesEnums.error:
+        message.error(JSON.stringify(data))
+        break
+      case updatesEnums.progress:
+        modal.visible = true
+        modal.title = '下载进度条'
+        modal.type = 'progress'
+        modal.percent = data.percent
+        modal.cancelText = '取消'
+        modal.okText = '确定'
+        modal.content = ''
+        break
+      case updatesEnums.available:
+        Modal.confirm({
+          title: '更新提示',
+          content: `发现最新版本 v${data.version}，是否更新？体验更多功能`,
+          cancelText: '不更新',
+          okText: '更新',
+          onOk() {
+            Modal.confirm({
+              title: '提示',
+              content: `是否打开下载地址，自定义去下载？当前下载有可能会很慢！`,
+              cancelText: '自定义下载',
+              okText: '当前下载',
+              onOk() {
+                ipcRenderer.invoke('check-for-updates', updatesEnums.downloading)
+              },
+              onCancel() {
+                ipcRenderer.invoke('open', 'https://github.com/biaov/mine-desktop/releases')
+              }
+            })
+          }
+        })
+        break
+      case updatesEnums.notAvailable:
+        message.success('当前已是最新版本')
+        break
+      case updatesEnums.downloaded:
+        modal.visible = false
+        Modal.info({
+          title: '升级提示',
+          content: `已为您下载最新应用，点击确定马上替换为最新版本！`,
+          okText: '确定',
+          onOk() {
+            ipcRenderer.invoke('check-for-updates', updatesEnums.quitAndInstall)
+          }
+        })
+        break
+    }
+  })
   /**
    * 清空下拉框
    */

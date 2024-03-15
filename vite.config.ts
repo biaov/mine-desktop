@@ -1,20 +1,54 @@
-import { defineConfig, UserConfig } from 'vite'
+import { defineConfig } from 'vite'
+import type { InlineConfig } from 'vite'
 import { resolve } from 'path'
+import electron from 'vite-plugin-electron/simple'
 import vue from '@vitejs/plugin-vue'
 import eslint from 'vite-plugin-eslint'
+import { removeReleaseDir } from './build/remove-release-dir'
 
-export const config: UserConfig = {
-  base: './',
-  plugins: [eslint(), vue()],
+const sameViteConfig: InlineConfig = {
   resolve: {
     /**
      * 路径别名
      */
     alias: {
       '@': resolve(__dirname, './src'),
-      '~': resolve(__dirname, './app')
+      '~': resolve(__dirname, './electron')
     }
-  },
+  }
+}
+
+const electronBuild: InlineConfig = {
+  build: {
+    outDir: 'dist/resources/electron'
+  }
+}
+
+export default defineConfig({
+  ...sameViteConfig,
+  base: './',
+  plugins: [
+    eslint({
+      lintOnStart: true,
+      exclude: ['node_modules']
+    }),
+    vue(),
+    electron({
+      main: {
+        entry: 'electron/main.ts',
+        vite: {
+          ...sameViteConfig,
+          ...electronBuild
+        }
+      },
+      preload: {
+        input: resolve(__dirname, 'electron/preload.ts'),
+        vite: electronBuild
+      },
+      renderer: {}
+    }),
+    removeReleaseDir()
+  ],
   css: {
     /**
      * 配置预编译器
@@ -28,10 +62,11 @@ export const config: UserConfig = {
   },
   server: {
     host: '0.0.0.0',
-    port: 3400
+    port: 3400,
+    proxy: {}
   },
   build: {
-    outDir: './dist/resources/vue',
+    outDir: 'dist/resources/vue',
     sourcemap: false,
     rollupOptions: {
       output: {
@@ -45,6 +80,4 @@ export const config: UserConfig = {
       ignoreTryCatch: false
     }
   }
-}
-
-export default defineConfig(config)
+})

@@ -1,8 +1,7 @@
-import { app, screen, Point, shell, BrowserWindow, dialog, OpenDialogOptions, desktopCapturer, DesktopCapturerSource, clipboard, ipcMain } from 'electron'
+import { app, screen, Point, shell, BrowserWindow, dialog, OpenDialogOptions, desktopCapturer, DesktopCapturerSource, clipboard } from 'electron'
 import { exec, execSync } from 'child_process'
 import { copyFileSync, writeFileSync, rmSync, existsSync, mkdirSync } from 'fs'
 import { resolve, join } from 'path'
-import robot from 'robotjs'
 import packageJson from '../../package.json'
 import { isUnDevelopment } from '~/config/env'
 import type { AboutActionReturn, FnReturn, OpenWindowActionParam, WordNumActionParam, VisibleDesktopParam, OpenAppAction, ActionEvent } from '~/types'
@@ -62,9 +61,9 @@ export const useActions = (): Record<string, FnReturn> => {
     /**
      * 窗口坐标
      */
-    const windowPoint = window.getPosition()
-    startWindowPoint.x = windowPoint[0]
-    startWindowPoint.y = windowPoint[1]
+    const [cx, cy] = window.getPosition()
+    startWindowPoint.x = cx
+    startWindowPoint.y = cy
 
     /**
      * 鼠标坐标
@@ -136,7 +135,7 @@ export const useActions = (): Record<string, FnReturn> => {
   /**
    * 选择文件
    */
-  const selectFileAction: ActionEvent<OpenDialogOptions> = async (_, { title, filters }: OpenDialogOptions) => {
+  const selectFileAction: ActionEvent<OpenDialogOptions, Promise<string | undefined>> = async (_, { title, filters }: OpenDialogOptions) => {
     const { canceled, filePaths } = await dialog.showOpenDialog({
       title,
       filters,
@@ -187,7 +186,7 @@ export const useActions = (): Record<string, FnReturn> => {
   /**
    * 远程控制
    */
-  const capturerAction = async (): Promise<DesktopCapturerSource[]> => await desktopCapturer.getSources({ types: ['window', 'screen'] })
+  const capturerAction = (): Promise<DesktopCapturerSource[]> => desktopCapturer.getSources({ types: ['window', 'screen'] })
 
   /**
    * 打开子窗口
@@ -203,8 +202,6 @@ export const useActions = (): Record<string, FnReturn> => {
    */
   const startBrushNum = (speed = 1000) => {
     setTimeout(() => {
-      robot.keyTap('a')
-      robot.keyTap('2')
       wordNumStatus && startBrushNum(speed)
     }, speed)
   }
@@ -249,12 +246,12 @@ export const useActions = (): Record<string, FnReturn> => {
    * 打开软件
    * 这里使用的是 .reg 文件, 也可以使用 electron-regedit 来写入注册表
    */
-  const openAppAction: ActionEvent<OpenAppAction.Option> = (_, { name, path }) => {
+  const openAppAction: ActionEvent<OpenAppAction.Option> = (_, { name: regName, path }) => {
     const tempsPath = join(process.cwd(), 'temps')
     !existsSync(tempsPath) && mkdirSync(tempsPath)
-    const dirPrefix = `[HKEY_CLASSES_ROOT\\${name}`
-    const regPath = join(tempsPath, `${name}.reg`)
-    writeFileSync(regPath, `Windows Registry Editor Version 5.00\n${dirPrefix}]\n@="${name} Protocol"\n"URL Protocol"=""\n${dirPrefix}\\shell\\open\\command]\n@="\\\"${path}\\\""\n`, {
+    const dirPrefix = `[HKEY_CLASSES_ROOT\\${regName}`
+    const regPath = join(tempsPath, `${regName}.reg`)
+    writeFileSync(regPath, `Windows Registry Editor Version 5.00\n${dirPrefix}]\n@="${regName} Protocol"\n"URL Protocol"=""\n${dirPrefix}\\shell\\open\\command]\n@="\\\"${path}\\\""\n`, {
       encoding: 'utf-8'
     })
     execSync(regPath)

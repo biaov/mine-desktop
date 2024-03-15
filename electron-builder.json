@@ -1,37 +1,59 @@
 {
   "appId": "mine.desktop.app",
-  "electronVersion": "22.0.0",
-  "copyright": "Copyright (c) 2022-present biaov",
   "asar": true,
+  "copyright": "Copyright (c) 2022-present biaov",
+  "productName": "mine-desktop",
   "directories": {
-    "output": "./dist/package"
+    "output": "dist/release/${version}"
+  },
+  "files": ["dist/resources"],
+  "mac": {
+    "target": ["dmg"],
+    "artifactName": "${productName}-mac-${version}-installer.${ext}"
   },
   "win": {
-    "icon": "./app/assets/256x256.ico",
-    "requestedExecutionLevel": "highestAvailable",
+    "icon": "electron/assets/256x256.ico",
     "target": [
       {
         "target": "nsis",
         "arch": ["x64"]
       }
-    ]
+    ],
+    "artifactName": "${productName}-windows-${version}-installer.${ext}",
+    "verifyUpdateCodeSignature": false,
+    "publisherName": "biaov"
   },
   "nsis": {
     "allowElevation": true,
     "allowToChangeInstallationDirectory": true,
-    "artifactName": "mine-desktop.${ext}",
     "createDesktopShortcut": true,
     "createStartMenuShortcut": true,
-    "installerIcon": "./app/assets/256x256.ico",
-    "uninstallerIcon": "./app/assets/256x256.ico",
-    "installerHeaderIcon": "./app/assets/256x256.ico",
+    "installerIcon": "electron/assets/256x256.ico",
+    "uninstallerIcon": "electron/assets/256x256.ico",
+    "installerHeaderIcon": "electron/assets/256x256.ico",
     "uninstallDisplayName": "uninstall",
     "oneClick": false,
-    "shortcutName": "mine-desktop",
-    "useZip": true,
     "deleteAppDataOnUninstall": false,
     "displayLanguageSelector": false,
     "perMachine": true
   },
-  "beforePack": "./hooks/beforePack.js"
+  "linux": {
+    "target": ["AppImage"],
+    "artifactName": "${productName}-linux-${version}-installer.${ext}"
+  },
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "biaov",
+      "repo": "mine-desktop",
+      "releaseType": "release",
+      "updaterCacheDirName": ".updater"
+    },
+    {
+      "provider": "generic",
+      "url": "http://localhost:3000/",
+      "useMultipleRangeRequest": false,
+      "updaterCacheDirName": ".updater"
+    }
+  ]
 }

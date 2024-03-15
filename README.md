@@ -3,19 +3,18 @@
 一个使用 Vite + TS + Vue3.x + Electron 开发的桌面软件 👍
 
 <h2 align="center">
-  <a href="https://github.com/biaov/mine-desktop/releases/tag/v1.1.0"><img src="https://img.shields.io/badge/version-1.1.1-blue?logo=npm" /></a>
-  <a href="https://github.com/biaov/mine-desktop/blob/main/LICENSE"><img src="https://img.shields.io/github/license/biaov/mine-desktop.svg?logo=Unlicense" /></a>
-  <a href="https://github.com/biaov/mine-desktop/blob/main/.eslintrc.js"><img src="https://img.shields.io/badge/eslint-prettier-blue?logo=eslint" /></a>
+  <a href="https://github.com/biaov/mine-desktop/releases"><img src="https://shields.io/github/v/release/biaov/mine-desktop.svg?logo=github&label=版本" alt="version" /></a>
+  <a href="https://github.com/biaov/mine-desktop/blob/main/LICENSE"><img src="https://img.shields.io/github/license/biaov/mine-desktop.svg" alt="LICENSE" /></a>
+  <a href="https://github.com/biaov/mine-desktop/blob/main/.eslintrc.js"><img src="https://img.shields.io/badge/eslint-prettier-blue?logo=eslint" alt="eslint" /></a>
 </h2>
 
 ## 下载地址
 
-- [x] [最新版本](https://github.com/biaov/mine-desktop/releases/tag/v1.1.1)
 - [x] [所有版本](https://github.com/biaov/mine-desktop/releases)
 
 ## 支持环境
 
-- `windows`
+- `Windows`
 
 ## 技术栈
 
@@ -32,10 +31,11 @@
 - [x] 设置磁盘图标
 - [x] 重置磁盘图标
 - [x] 屏幕显示
-- [x] 输入法刷字数
+- [ ] 输入法刷字数
 - [x] 电脑桌面的显示和隐藏
 - [x] 生成短链
 - [x] 打开应用程序
+- [x] 自动更新，支持 Windows
 
 ## 安装依赖
 
@@ -49,12 +49,6 @@ npm i
 npm start
 ```
 
-- **如果遇到 `NODE_MODULE_VERSION` 不一致的问题，则运行以下命令解决**
-
-```sh
-npm run rebuild
-```
-
 ## 打包项目
 
 ```sh
@@ -66,14 +60,12 @@ npm run build
 ```MD
 ├── mine-desktop ---------------- 项目名称
 │   ├── .vscode --------------------- VSCode 配置
-│   ├── app ------------------------- Electron 主进程
+│   ├── build ------------------------- 打包配置
+│   ├── electron ------------------------- Electron 主进程
 │   │   ├── assets ------------------ 静态资源
 │   │   ├── main -------------------- 主进程
 │   │   ├── preload ----------------- 预加载
-│   │   └── vite.config.ts ---------- Vite 配置
-│   ├── hooks ----------------------- 打包钩子
 │   ├── public ---------------------- 静态资源
-│   ├── scripts --------------------- 脚本
 │   ├── src ------------------------- Vue 项目
 │   │   ├── api --------------------- 接口
 │   │   ├── assets ------------------ 静态资源
@@ -107,19 +99,23 @@ npm run build
 
 ## 依赖解析
 
+### dependencies
+
 - `@ant-design/icons-vue`: `ant-design-vue` 图标库
 - `ant-design-vue`: Vue UI 框架
 - `axios`: 接口请求工具
 - `dayjs`: 时间处理工具
-- `robotjs`: 模拟键盘和鼠标
+- `electron-log`: Electron 日志工具
+- `electron-updater`: 自动更新软件程序
 - `vue`: 前端框架
 - `vue-router`: 路由
-- `@electron/rebuild`: 重建 Electron
+
+### devDependencies
+
 - `@types/node`: `node` 的类型
 - `@typescript-eslint/eslint-plugin`: 检测和修复 TS 代码
 - `@typescript-eslint/parser`: 解析 TS 代码并生成抽象语法树（AST），以供 Eslint 进行代码检查
 - `@vitejs/plugin-vue`: Vite 解析 Vue 文件
-- `cross-env`: 跨平台设置环境变量
 - `electron`: 桌面应用框架
 - `electron-builder`: `electron` 打包工具
 - `eslint`: 代码检查工具
@@ -134,6 +130,8 @@ npm run build
 - `vite`: 项目构建工具
 - `vite-plugin-eslint`: 检查代码格式的 Vite 插件
 - `vue-tsc`: 编译 TS 单文件 Vue 文件的工具
+- `vite-plugin-electron`: vite 支持 electron 的插件
+- `vite-plugin-electron-renderer`: vite 支持 electron 的渲染插件
 
 ## 贡献者们
 

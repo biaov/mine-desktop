@@ -55,6 +55,10 @@ const { onMousedown } = useMove()
   </a-drawer>
   <a-modal v-model:open="modal.visible" v-bind="{ title: modal.title, cancelText: modal.cancelText, okButtonProps: modal.okButtonProps, okText: modal.okText }" @ok="handleOk">
     <p v-if="modal.content">{{ modal.content }}</p>
+    <template v-else>
+      <a-alert type="warning" message="关闭弹窗后台会下载！" closable />
+      <a-progress :percent="modal.percent" />
+    </template>
   </a-modal>
 </template>
 

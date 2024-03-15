@@ -6,7 +6,7 @@ import { createWindow } from './hooks/window'
 
 app.whenReady().then(() => {
   createWindow()
-  app.on('activate', function () {
+  app.on('activate', () => {
     !BrowserWindow.getAllWindows().length && createWindow()
   })
 })
