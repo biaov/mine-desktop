@@ -68,9 +68,9 @@ export interface OkButtonProps {
 }
 
 /**
- * modal
+ * Modal Reactive
  */
-export interface Modal {
+export interface ModalReactive {
   visible: boolean
   title: string
   cancelText: string
@@ -78,4 +78,5 @@ export interface Modal {
   okButtonProps: OkButtonProps
   okText: string
   content: string
+  percent?: number
 }

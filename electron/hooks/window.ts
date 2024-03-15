@@ -7,6 +7,7 @@ import { handleChannels } from '~/config'
 import type { CurIpcMain } from '~/types'
 import { createServer } from './server'
 import { useActions } from './actions'
+import { useCheckForUpdates } from './check-for-updates'
 
 /**
  * icp 程序
@@ -34,7 +35,7 @@ export const createWindow = (path?: string) => {
       /**
        * 预加载程序
        */
-      preload: resolve(__dirname, './preload.cjs')
+      preload: resolve(__dirname, 'preload.js')
     },
     icon: resolve(__dirname, '../assets/logo.png')
   }
@@ -55,4 +56,10 @@ export const createWindow = (path?: string) => {
   })
   createServer({ window, path })
   setupIcp()
+  useCheckForUpdates()
 }
+
+/**
+ * 获取当前 windows
+ */
+export const getWindow = () => BrowserWindow.getFocusedWindow() as BrowserWindow

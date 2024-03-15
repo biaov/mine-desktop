@@ -164,6 +164,7 @@ export const useCustomApp = ({ onPresetItem }: ShareData) => {
     historyList.value.push(newItem)
     customFormRef.value.resetFields()
     onPresetItem(newItem)
+    return null
   }
 
   /**

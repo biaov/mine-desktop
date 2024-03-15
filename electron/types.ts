@@ -72,3 +72,10 @@ export namespace OpenAppAction {
 export interface ActionEvent<T = never, R = void> {
   (e: IpcMainInvokeEvent, option: T): R
 }
+
+/**
+ * 检查更新回调函数
+ */
+export interface CheckForUpdateCallback {
+  (value: { type: string; data?: any }): void
+}
