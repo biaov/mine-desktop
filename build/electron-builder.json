@@ -3,10 +3,13 @@
   "asar": true,
   "copyright": "Copyright (c) 2022-present biaov",
   "productName": "mine-desktop",
+  "extraMetadata": {},
+  "removePackageKeywords": false,
+  "removePackageScripts": false,
   "directories": {
     "output": "dist/release/${version}"
   },
-  "files": ["dist/resources"],
+  "files": ["dist/resources", "!**/node_modules/**/*"],
   "mac": {
     "target": ["dmg"],
     "artifactName": "${productName}-mac-${version}-installer.${ext}"
@@ -55,5 +58,6 @@
       "useMultipleRangeRequest": false,
       "updaterCacheDirName": ".updater"
     }
-  ]
+  ],
+  "beforePack": "build/before-pack.js"
 }

@@ -18,8 +18,7 @@
     /* Linting */
     "strict": true,
     "noUnusedLocals": false,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
+    "noUnusedParameters": false,
 
     "baseUrl": "./",
 
@@ -29,6 +28,6 @@
       "~/*": ["./electron/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "electron"],
+  "include": ["src/**/*.ts", "src/**/*.vue", "electron/**/*.ts"],
   "exclude": ["node_modules"]
 }

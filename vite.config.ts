@@ -4,7 +4,6 @@ import { resolve } from 'path'
 import electron from 'vite-plugin-electron/simple'
 import vue from '@vitejs/plugin-vue'
 import eslint from 'vite-plugin-eslint'
-import { removeReleaseDir } from './build/remove-release-dir'
 
 const sameViteConfig: InlineConfig = {
   resolve: {
@@ -46,8 +45,7 @@ export default defineConfig({
         vite: electronBuild
       },
       renderer: {}
-    }),
-    removeReleaseDir()
+    })
   ],
   css: {
     /**

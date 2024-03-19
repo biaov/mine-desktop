@@ -1,7 +1,7 @@
 {
   "name": "mine-desktop",
   "private": false,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "dist/resources/electron/main.js",
   "author": {
     "name": "biaov",
@@ -15,8 +15,7 @@
     "build": "vue-tsc && vite build && electron-builder -c build/electron-builder.json",
     "preview": "vite preview",
     "prettier": "prettier --write '**/*.{ts,js,less,md,json,vue}'",
-    "ncu": "ncu --configFileName .ncurc.json && npm i",
-    "test": "electron-builder -h"
+    "ncu": "ncu --configFileName .ncurc.json && npm i"
   },
   "engines": {
     "node": ">=20"
@@ -46,7 +45,7 @@
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
     "ant-design-vue": "^4.1.2",
-    "axios": "^1.6.7",
+    "axios": "^1.6.8",
     "dayjs": "^1.11.10",
     "electron-log": "^5.1.2",
     "electron-updater": "^6.1.8",
@@ -54,9 +53,9 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.26",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
+    "@types/node": "^20.11.29",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
     "@vitejs/plugin-vue": "^5.0.4",
     "electron": "^28.2.6",
     "electron-builder": "^24.13.3",
