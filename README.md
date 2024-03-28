@@ -3,7 +3,7 @@
 一个使用 Vite + TS + Vue3.x + Electron 开发的桌面软件 👍
 
 <h2 align="center">
-  <a href="https://github.com/biaov/mine-desktop/releases"><img src="https://shields.io/github/v/release/biaov/mine-desktop.svg?logo=github&label=版本" alt="version" /></a>
+  <a href="https://github.com/biaov/mine-desktop/releases"><img src="https://shields.io/github/v/release/biaov/mine-desktop.svg?logo=github&label=version" alt="version" /></a>
   <a href="https://github.com/biaov/mine-desktop/blob/main/LICENSE"><img src="https://img.shields.io/github/license/biaov/mine-desktop.svg" alt="LICENSE" /></a>
   <a href="https://github.com/biaov/mine-desktop/blob/main/.eslintrc.js"><img src="https://img.shields.io/badge/eslint-prettier-blue?logo=eslint" alt="eslint" /></a>
 </h2>
