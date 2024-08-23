@@ -15,7 +15,7 @@ const cacelKey = 'requesting'
 /**
  * 移除等待请求
  */
-const removePendingAjax = (config: AxiosRequestConfig<any>, cancel?: Canceler) => {
+const removePendingAjax = (config: AxiosRequestConfig, cancel?: Canceler) => {
   const params = typeof config.params === 'string' ? config.params : JSON.stringify(config.params)
   const data = typeof config.data === 'string' ? config.data : JSON.stringify(config.data)
   const url = (config.url as string) + config.method + params + data

@@ -2,7 +2,7 @@
  * 检查更新回调函数
  */
 interface CheckForUpdateCallback {
-  (value: { type: string; data?: any }): void
+  (value: { type: string; data?: unknown }): void
 }
 
 /**

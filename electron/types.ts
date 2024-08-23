@@ -11,7 +11,7 @@ export interface HandleChannelItem {
 /**
  * IpcMain
  */
-export type CurIpcMain = Record<string, any> & IpcMain
+export type CurIpcMain = Record<string, unknown> & IpcMain
 
 /**
  * aboutAction Return
@@ -24,7 +24,7 @@ export interface AboutActionReturn {
 /**
  * 返回函数
  */
-export type FnReturn<T = any> = (...arg: T[]) => T
+export type FnReturn<T = unknown> = (...arg: T[]) => T
 
 /**
  * 参数
@@ -77,5 +77,5 @@ export interface ActionEvent<T = never, R = void> {
  * 检查更新回调函数
  */
 export interface CheckForUpdateCallback {
-  (value: { type: string; data?: any }): void
+  (value: { type: string; data?: unknown }): void
 }

@@ -97,42 +97,6 @@ npm run build
 └   └── vite.config.ts -------------- Vite 配置
 ```
 
-## 依赖解析
-
-### dependencies
-
-- `@ant-design/icons-vue`: `ant-design-vue` 图标库
-- `ant-design-vue`: Vue UI 框架
-- `axios`: 接口请求工具
-- `dayjs`: 时间处理工具
-- `electron-log`: Electron 日志工具
-- `electron-updater`: 自动更新软件程序
-- `vue`: 前端框架
-- `vue-router`: 路由
-
-### devDependencies
-
-- `@types/node`: `node` 的类型
-- `@typescript-eslint/eslint-plugin`: 检测和修复 TS 代码
-- `@typescript-eslint/parser`: 解析 TS 代码并生成抽象语法树（AST），以供 Eslint 进行代码检查
-- `@vitejs/plugin-vue`: Vite 解析 Vue 文件
-- `electron`: 桌面应用框架
-- `electron-builder`: `electron` 打包工具
-- `eslint`: 代码检查工具
-- `eslint-config-airbnb-base`: airbnb-base 代码编写规范
-- `eslint-config-prettier`: 将 Prettier 规则集成到 ESlint 检查中
-- `eslint-plugin-import`: 检测和修复 JS 中的模块导入导出问题
-- `eslint-plugin-prettier`: 检测不符合 Prettier 格式的代码
-- `eslint-plugin-vue`: 检测和修复 Vue 代码
-- `less`: CSS 预编译器
-- `prettier`: 代码格式化
-- `typescript`: 编程语言
-- `vite`: 项目构建工具
-- `vite-plugin-eslint`: 检查代码格式的 Vite 插件
-- `vue-tsc`: 编译 TS 单文件 Vue 文件的工具
-- `vite-plugin-electron`: vite 支持 electron 的插件
-- `vite-plugin-electron-renderer`: vite 支持 electron 的渲染插件
-
 ## 贡献者们
 
 [![贡献者们](https://contrib.rocks/image?repo=biaov/mine-desktop)](https://github.com/biaov/mine-desktop/graphs/contributors)

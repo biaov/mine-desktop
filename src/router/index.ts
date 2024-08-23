@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory, Router } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 import routes from './routes'
 
 /**
@@ -20,7 +21,7 @@ const router: Router = createRouter({
         name: 'dashboard'
       },
       component: () => import(`@/views/layout/index.vue`),
-      children: routes as any[]
+      children: routes as unknown as RouteRecordRaw[]
     }
   ]
 })

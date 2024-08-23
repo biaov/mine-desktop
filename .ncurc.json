@@ -1,4 +1,0 @@
-{
-  "upgrade": true,
-  "reject": ["electron", "electron-builder", "vite-plugin-electron", "vite-plugin-electron-renderer"]
-}

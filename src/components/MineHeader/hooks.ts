@@ -112,7 +112,6 @@ export const useContextmenu = ({ menuList, onClearAll, onHideDropdown }: ShareDa
 export const useMenu = () => {
   const { ipcRenderer, onCheckForUpdate } = useRenderer()
   let callBack: CallBackFn
-  let onClearAll: ClearAllFn
   const aboutDrawer = ref({ visible: false, name: '', version: '' })
   const modal = reactive<ModalReactive>({
     visible: false,
@@ -306,7 +305,7 @@ export const useMenu = () => {
   /**
    * 清空下拉框
    */
-  onClearAll = (list = menuList.value) => {
+  const onClearAll: ClearAllFn = (list = menuList.value) => {
     list.forEach(item => {
       item.state && (item.state = false)
       item.children?.length && onClearAll(item.children)

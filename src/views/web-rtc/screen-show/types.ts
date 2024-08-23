@@ -9,7 +9,7 @@ interface VideoConfig {
   mandatory: Mandatory
 }
 
-export interface UserMediaOption extends Record<string, any> {
+export interface UserMediaOption extends Record<string, unknown> {
   audio: boolean
   video: VideoConfig
 }

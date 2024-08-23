@@ -22,7 +22,7 @@ export const useConnection = () => {
               maxHeight: globalThis.screen.height
             }
           }
-        } as any)
+        } as MediaStreamConstraints)
         .then(stream => {
           const video = v1Ref.value!
           video.srcObject = stream

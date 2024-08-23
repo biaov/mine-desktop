@@ -6,5 +6,5 @@ interface Meta {
 
 export interface PagingResponse {
   meta: Meta
-  list: Record<string, any>[]
+  list: Record<string, unknown>[]
 }

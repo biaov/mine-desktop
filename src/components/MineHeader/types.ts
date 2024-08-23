@@ -79,7 +79,7 @@ export interface ModalReactive {
   okText: string
   content: string
   percent?: number
-  footer?: any | null
+  footer?: unknown | null
   closable?: boolean
   maskClosable?: boolean
 }
