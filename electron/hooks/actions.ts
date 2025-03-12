@@ -180,7 +180,7 @@ export const useActions = (): Record<string, FnReturn> => {
    * 激活系统
    */
   const activateSystemAction = () => {
-    exec(`start ${resolve(__dirname, '../assets/activateSystem.bat')}`)
+    exec(`start ${resolve(import.meta.dirname, '../assets/activateSystem.bat')}`)
   }
 
   /**

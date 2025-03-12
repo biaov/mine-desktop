@@ -22,7 +22,7 @@ export const createServer = ({ window, path = '' }: CreateServeParam) => {
     /**
      * 打包
      */
-    pageUrl = new URL(resolve(__dirname, '../vue/index.html'), `file://${__dirname}`).toString()
+    pageUrl = new URL(resolve(import.meta.dirname, '../vue/index.html'), `file://${import.meta.dirname}`).toString()
   }
   window.loadURL(pageUrl + path)
 }

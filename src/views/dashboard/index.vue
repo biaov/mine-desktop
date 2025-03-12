@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { colorList } from '@/config'
 import MineCharge from './components/MineCharge'
 

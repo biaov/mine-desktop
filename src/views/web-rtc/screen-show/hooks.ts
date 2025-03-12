@@ -1,4 +1,3 @@
-import { ref, onMounted } from 'vue'
 import { useRenderer } from '@/composables/useBridge'
 import type { DesktopCapturerSource } from './types'
 

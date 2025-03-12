@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useRoute } from 'vue-router'
 import { useLayout } from './hooks'
 
 const { sidebarRef, isCollapsed } = useLayout()

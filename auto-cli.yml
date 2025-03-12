@@ -1,1 +1,1 @@
-reject: ['electron', 'electron-builder', 'vite-plugin-electron', 'vite-plugin-electron-renderer', 'vite', 'eslint-plugin-vue']
+reject: ['vite', 'eslint-plugin-vue']

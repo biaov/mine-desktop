@@ -2,8 +2,10 @@ import globals from 'globals'
 import pluginJs from '@eslint/js'
 import tseslint from 'typescript-eslint'
 import pluginVue from 'eslint-plugin-vue'
+import { FlatCompat } from '@eslint/eslintrc'
 
 const developmentOff = process.env.NODE_ENV === 'development' ? 'off' : 'error'
+const compat = new FlatCompat()
 
 export default [
   { files: ['**/*.{js,mjs,cjs,ts,vue}'] },
@@ -11,6 +13,7 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...pluginVue.configs['flat/essential'],
+  ...compat.config({ extends: ['./types/.eslintrc-auto-import.json'] }),
   { files: ['**/*.{vue,ts}'], languageOptions: { parserOptions: { parser: tseslint.parser } } },
   {
     rules: {

@@ -5,6 +5,7 @@ export interface Props {
   type: string
   antIcon?: string
   icon?: string
+  tips?: string
 }
 
 /**

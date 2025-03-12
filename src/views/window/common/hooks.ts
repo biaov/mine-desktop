@@ -1,4 +1,3 @@
-import { ref, reactive } from 'vue'
 import { message } from 'ant-design-vue'
 import { useRenderer } from '@/composables/useBridge'
 import type { ListItem, Modal } from './types'
@@ -113,6 +112,7 @@ export const useBtn = () => {
     {
       type: 'primary',
       label: '显示桌面',
+      tips: '要先点击隐藏桌面，不然会打开资源管理器',
       value: 'visibleDesktop',
       icon: 'icon-show',
       action() {

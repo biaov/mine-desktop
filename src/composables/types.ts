@@ -2,7 +2,13 @@
  * 检查更新回调函数
  */
 interface CheckForUpdateCallback {
-  (value: { type: string; data?: unknown }): void
+  (value: {
+    type: string
+    data: {
+      percent: number
+      version: string
+    }
+  }): void
 }
 
 /**
@@ -13,4 +19,11 @@ export interface GlobalThisElectron extends Window {
     ipcRenderer: import('electron').IpcRenderer
     onCheckForUpdate: (value: CheckForUpdateCallback) => void
   }
+}
+
+/**
+ * useDefineTemplate option
+ */
+export interface USEDefineTemplateOption {
+  inheritAttrs?: boolean
 }

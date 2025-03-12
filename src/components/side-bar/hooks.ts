@@ -1,5 +1,3 @@
-import { ref, computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
 import routes from '@/router/routes'
 import { RouteItem } from '@/router/types'
 import type { Props, Emits } from './types'

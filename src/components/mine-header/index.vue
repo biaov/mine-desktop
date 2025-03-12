@@ -12,17 +12,19 @@ const { onMousedown } = useMove()
 
 <template>
   <!-- 头部 -->
-  <header class="mine-header" @contextmenu.prevent="onContextmenu" @mousedown="onMousedown">
-    <div class="lf">
+  <header class="mine-header fixed top-0 left-0 z-3 flex justify-between items-center w-full h-50"
+    @contextmenu.prevent="onContextmenu" @mousedown="onMousedown">
+    <div class="lf flex">
       <!-- logo -->
-      <div class="logo">
+      <div class="flex justify-center items-center w-60 h-full p-10">
         <img src="../../assets/logo.svg" alt="图片" mode="contain" title="mine-desktop" />
       </div>
       <!-- 菜单 -->
-      <ul class="menu-list" @click.stop>
-        <li class="menu-item" :class="{ active: item.state }" v-for="item in menuList" :key="item.value" @click="onMenuItem(item)">
+      <ul class="menu-list flex items-center text-[0px]" @click.stop>
+        <li class="menu-item relative px-8 py-4 mr-4 cursor-pointer last:mr-0" :class="{ active: item.state }"
+          v-for="item in menuList" :key="item.value" @click="onMenuItem(item)">
           {{ item.label }}(
-          <span class="line">{{ item.shortcut }}</span>
+          <span class="underline">{{ item.shortcut }}</span>
           )
           <ul class="dropdown-list" v-if="item.children?.length" @click.stop>
             <li class="dropdown-item" v-for="it in item.children" :key="it.value" @click="onMenuChildItem(it)">
@@ -35,12 +37,15 @@ const { onMousedown } = useMove()
     </div>
     <div class="center">mine-desktop [biaov]</div>
     <!-- 设置大小 -->
-    <ul class="resize-list" @click.stop>
-      <li class="item" v-for="item in resizeList" :key="item.value" @click="item.action && item.action()"><span :class="['iconfont', item.iconName]"></span></li>
+    <ul class="resize-list flex h-full" @click.stop>
+      <li class="item flex justify-center items-center w-60 h-full cursor-pointer" v-for="item in resizeList" :key="item.value" @click="item.action && item.action()"><span
+          :class="['iconfont', item.iconName]"></span></li>
     </ul>
     <!-- 下拉框 -->
-    <ul class="dropdown-list" :style="{ top: dropdownConfig.y, left: dropdownConfig.x }" v-if="dropdownConfig.visible" @click.stop>
-      <li class="dropdown-item" :class="{ disabled: item.disabled }" v-for="item in dropdownList" :key="item.value" @click="onDropdownItem(item)">
+    <ul class="dropdown-list" :style="{ top: dropdownConfig.y, left: dropdownConfig.x }" v-if="dropdownConfig.visible"
+      @click.stop>
+      <li class="dropdown-item" :class="{ disabled: item.disabled }" v-for="item in dropdownList" :key="item.value"
+        @click="onDropdownItem(item)">
         <span>{{ item.label }}</span>
         <span>{{ item.shortcut }}</span>
       </li>
@@ -53,19 +58,15 @@ const { onMousedown } = useMove()
       <a-descriptions-item label="版权">Copyright (c) 2022-present biaov</a-descriptions-item>
     </a-descriptions>
   </a-drawer>
-  <a-modal
-    v-model:open="modal.visible"
-    v-bind="{
-      title: modal.title,
-      cancelText: modal.cancelText,
-      okButtonProps: modal.okButtonProps,
-      okText: modal.okText,
-      footer: modal.footer,
-      closable: modal.closable,
-      maskClosable: modal.maskClosable
-    }"
-    @ok="handleOk"
-  >
+  <a-modal v-model:open="modal.visible" v-bind="{
+    title: modal.title,
+    cancelText: modal.cancelText,
+    okButtonProps: modal.okButtonProps,
+    okText: modal.okText,
+    footer: modal.footer,
+    closable: modal.closable,
+    maskClosable: modal.maskClosable
+  }" @ok="handleOk">
     <p v-if="modal.content">{{ modal.content }}</p>
     <template v-else>
       <a-row justify="center">

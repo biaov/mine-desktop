@@ -1,4 +1,3 @@
-import { ref } from 'vue'
 import { message, Form } from 'ant-design-vue'
 import { shortChainApi } from '@/api/short-chain'
 import { useRenderer } from '@/composables/useBridge'

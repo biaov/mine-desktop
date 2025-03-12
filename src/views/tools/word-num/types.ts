@@ -1,4 +1,3 @@
-import { Ref } from 'vue'
 
 /**
  * useKeypad 的分享参数
