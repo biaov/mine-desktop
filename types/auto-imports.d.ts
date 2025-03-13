@@ -77,6 +77,6 @@ declare global {
   export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
   // @ts-ignore
-  export type { GlobalThisElectron, USEDefineTemplateOption } from '../src/composables/types'
+  export type { GlobalThisElectron, USEDefineTemplateOption, CacheStringFunctionOption } from '../src/composables/types'
   import('../src/composables/types')
 }

@@ -9,7 +9,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AntIcon: typeof import('./../src/components/ant-icon/index.vue')['default']
-    copy: typeof import('./../src/components/mine-button/index copy.vue')['default']
     MineButton: typeof import('./../src/components/mine-button/index.vue')['default']
     MineHeader: typeof import('./../src/components/mine-header/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
