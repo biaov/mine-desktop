@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import { useContextmenu, useMenu, useResize, useMove } from './hooks'
 
-defineOptions({
-  name: 'MineHeader'
-})
 const { aboutDrawer, menuList, modal, onMenuItem, onMenuChildItem, onClearAll, onHideDropdown, handleOk } = useMenu()
 const { dropdownList, dropdownConfig, onDropdownItem, onContextmenu } = useContextmenu({ menuList, onClearAll, onHideDropdown })
 const { resizeList } = useResize()
@@ -17,7 +14,7 @@ const { onMousedown } = useMove()
     <div class="lf flex">
       <!-- logo -->
       <div class="flex justify-center items-center w-60 h-full p-10">
-        <img src="../../assets/logo.svg" alt="图片" mode="contain" title="mine-desktop" />
+        <img src="/logo.svg" alt="图片" mode="contain" title="mine-desktop" />
       </div>
       <!-- 菜单 -->
       <ul class="menu-list flex items-center text-[0px]" @click.stop>

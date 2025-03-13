@@ -36,10 +36,10 @@ export default defineConfig({
   base: './',
   plugins: [
     tailwindcss(),
-    eslint({
+    /* eslint({
       lintOnStart: true,
       exclude: ['node_modules']
-    }),
+    }), */
     vue(),
     electron({
       main: {

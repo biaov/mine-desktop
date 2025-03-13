@@ -2,9 +2,6 @@
 import { useIcon } from './hooks'
 import type { Props } from './types'
 
-defineOptions({
-  name: 'AntIcon'
-})
 const props = withDefaults(defineProps<Props>(), {
   type: ''
 })

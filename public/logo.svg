@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 10.4 10.9" width="256" height="256">
+  <linearGradient id="SVGID_1_" x1=".02" y1="12.24" x2="10.4" y2="1.86" gradientTransform="translate(0 12.8) scale(1 -1)" gradientUnits="userSpaceOnUse">
+    <stop offset="0" style="stop-color: #583ed5" />
+    <stop offset="1" style="stop-color: #17d7fa" />
+  </linearGradient>
+  <path
+    fill="url(#SVGID_1_)"
+    d="M5.1,3.5c-.8,0-1.4-.1-2-.3-.6-.2-1-.3-1.3-.5v-.2h0V10.9H0V1.3c0-.2,0-.4,.1-.7S.4,.2,.6,.1C.7,0,.9,0,1,0S1.3,0,1.4,.1c.1,0,.2,.1,.3,.2s.2,.1,.2,.1c.2,.2,.4,.3,.6,.4,.2,.2,.5,.3,.7,.4s.6,.2,.9,.3,.7,.1,1.1,.1h.1c.4,0,.7,0,1.1-.1s.5-.2,.8-.3,.5-.2,.7-.4c.2-.1,.4-.3,.6-.4,0,0,.1-.1,.2-.1,.1-.1,.2-.1,.3-.2,.1,0,.2-.1,.4-.1s.3,0,.4,.1c.3,.1,.4,.3,.5,.5s.1,.5,.1,.7V10.9h-1.8V2.7c-.1,.1-.3,.2-.6,.3-.2,.1-.5,.2-.8,.3s-.6,.1-.9,.1-.7,.1-1,.1h-.2Z"
+  />
+</svg>

@@ -4,6 +4,8 @@
 import { app, BrowserWindow } from 'electron'
 import { createWindow } from './hooks/window'
 
+app.commandLine.appendSwitch('lang', 'zh-CN')
+
 app.whenReady().then(() => {
   createWindow()
   app.on('activate', () => {

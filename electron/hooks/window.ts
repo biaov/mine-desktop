@@ -36,7 +36,7 @@ export const createWindow = (path?: string) => {
        */
       preload: resolve(import.meta.dirname, 'preload.js')
     },
-    icon: resolve(import.meta.dirname, '../assets/logo.png')
+    icon: resolve(import.meta.dirname, '../assets/256x256.ico')
   }
   const window = new BrowserWindow(browserWindowOption)
 
@@ -48,7 +48,7 @@ export const createWindow = (path?: string) => {
 
   window.setAppDetails({
     appId: 'mine.desktop.app',
-    appIconPath: resolve(import.meta.dirname, '../assets/favicon.ico'),
+    appIconPath: resolve(import.meta.dirname, '../assets/logo.ico'),
     appIconIndex: 0,
     relaunchDisplayName: 'MINE DESKTOP',
     relaunchCommand: `"${exePath}"`
