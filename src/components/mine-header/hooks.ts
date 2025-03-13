@@ -194,6 +194,13 @@ export const useMenu = () => {
           action() {
             ipcRenderer.invoke('open', 'https://baidu.com/')
           }
+        },
+        {
+          label: '必应',
+          value: 'biying',
+          action() {
+            ipcRenderer.invoke('open', 'https://cn.bing.com/')
+          }
         }
       ]
     },
