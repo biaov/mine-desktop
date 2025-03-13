@@ -27,3 +27,8 @@ export interface GlobalThisElectron extends Window {
 export interface USEDefineTemplateOption {
   inheritAttrs?: boolean
 }
+
+/**
+ * cacheStringFunction
+ */
+export type CacheStringFunctionOption = (str: string) => string

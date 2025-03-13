@@ -1,6 +1,6 @@
-import type { USEDefineTemplateOption } from './types'
+import type { USEDefineTemplateOption, CacheStringFunctionOption } from './types'
 
-const cacheStringFunction = (fn: (str: string) => string) => {
+const cacheStringFunction = (fn: CacheStringFunctionOption) => {
   const cache = Object.create(null)
   return (str: string) => {
     const hit = cache[str]
