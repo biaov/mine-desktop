@@ -1,4 +1,3 @@
-import { ref, reactive, onMounted } from 'vue'
 import { Modal, message } from 'ant-design-vue'
 import { useRenderer } from '@/composables/useBridge'
 import { updatesEnums } from '@/enums/icp'
@@ -195,6 +194,13 @@ export const useMenu = () => {
           action() {
             ipcRenderer.invoke('open', 'https://baidu.com/')
           }
+        },
+        {
+          label: '必应',
+          value: 'biying',
+          action() {
+            ipcRenderer.invoke('open', 'https://cn.bing.com/')
+          }
         }
       ]
     },
@@ -245,63 +251,63 @@ export const useMenu = () => {
       ]
     }
   ])
-
   /**
    * 检查更新回传
    */
-  onCheckForUpdate(({ type, data }) => {
-    switch (type) {
-      case updatesEnums.error:
-        message.error(JSON.stringify(data))
-        break
-      case updatesEnums.progress:
-        modal.percent = +data.percent.toFixed(2)
-        modal.closable = false
-        modal.title = '下载进度条'
-        modal.footer = null
-        modal.type = 'progress'
-        modal.content = ''
-        modal.visible = true
-        modal.maskClosable = false
-        break
-      case updatesEnums.available:
-        Modal.confirm({
-          title: '更新提示',
-          content: `发现最新版本 v${data.version}，是否更新？体验更多功能`,
-          cancelText: '不更新',
-          okText: '更新',
-          onOk() {
-            Modal.confirm({
-              title: '提示',
-              content: `是否打开下载地址，自定义去下载？当前下载有可能会很慢！`,
-              cancelText: '自定义下载',
-              okText: '当前下载',
-              onOk() {
-                ipcRenderer.invoke('check-for-updates', updatesEnums.downloading)
-              },
-              onCancel() {
-                ipcRenderer.invoke('open', 'https://github.com/biaov/mine-desktop/releases')
-              }
-            })
-          }
-        })
-        break
-      case updatesEnums.notAvailable:
-        message.success('当前已是最新版本')
-        break
-      case updatesEnums.downloaded:
-        modal.visible = false
-        Modal.info({
-          title: '升级提示',
-          content: `已为您下载最新应用，点击确定马上替换为最新版本！`,
-          okText: '确定',
-          onOk() {
-            ipcRenderer.invoke('check-for-updates', updatesEnums.quitAndInstall)
-          }
-        })
-        break
-    }
-  })
+  onCheckForUpdate &&
+    onCheckForUpdate(({ type, data }) => {
+      switch (type) {
+        case updatesEnums.error:
+          message.error(JSON.stringify(data))
+          break
+        case updatesEnums.progress:
+          modal.percent = +data.percent.toFixed(2)
+          modal.closable = false
+          modal.title = '下载进度条'
+          modal.footer = null
+          modal.type = 'progress'
+          modal.content = ''
+          modal.visible = true
+          modal.maskClosable = false
+          break
+        case updatesEnums.available:
+          Modal.confirm({
+            title: '更新提示',
+            content: `发现最新版本 v${data.version}，是否更新？体验更多功能`,
+            cancelText: '不更新',
+            okText: '更新',
+            onOk() {
+              Modal.confirm({
+                title: '提示',
+                content: `是否打开下载地址，自定义去下载？当前下载有可能会很慢！`,
+                cancelText: '自定义下载',
+                okText: '当前下载',
+                onOk() {
+                  ipcRenderer.invoke('check-for-updates', updatesEnums.downloading)
+                },
+                onCancel() {
+                  ipcRenderer.invoke('open', 'https://github.com/biaov/mine-desktop/releases')
+                }
+              })
+            }
+          })
+          break
+        case updatesEnums.notAvailable:
+          message.success('当前已是最新版本')
+          break
+        case updatesEnums.downloaded:
+          modal.visible = false
+          Modal.info({
+            title: '升级提示',
+            content: `已为您下载最新应用，点击确定马上替换为最新版本！`,
+            okText: '确定',
+            onOk() {
+              ipcRenderer.invoke('check-for-updates', updatesEnums.quitAndInstall)
+            }
+          })
+          break
+      }
+    })
   /**
    * 清空下拉框
    */

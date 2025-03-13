@@ -4,7 +4,7 @@
 import { app, BrowserWindow, BrowserWindowConstructorOptions, ipcMain } from 'electron'
 import { resolve } from 'path'
 import { handleChannels } from '~/config'
-import type { CurIpcMain } from '~/types'
+import type { IpcMainKey } from '~/types'
 import { createServer } from './server'
 import { useActions } from './actions'
 import { useCheckForUpdates } from './check-for-updates'
@@ -16,8 +16,7 @@ export const setupIcp = () => {
   const actions = useActions()
 
   handleChannels.forEach(item => {
-    const curIpcMain = ipcMain as CurIpcMain
-    curIpcMain[item.type || 'handle'](item.channel, actions[`${item.channel}Action`])
+    ipcMain[(item.type || 'handle') as IpcMainKey](item.channel, actions[`${item.channel}Action`])
   })
 }
 
@@ -35,9 +34,9 @@ export const createWindow = (path?: string) => {
       /**
        * 预加载程序
        */
-      preload: resolve(__dirname, 'preload.js')
+      preload: resolve(import.meta.dirname, 'preload.js')
     },
-    icon: resolve(__dirname, '../assets/logo.png')
+    icon: resolve(import.meta.dirname, '../assets/256x256.ico')
   }
   const window = new BrowserWindow(browserWindowOption)
 
@@ -49,7 +48,7 @@ export const createWindow = (path?: string) => {
 
   window.setAppDetails({
     appId: 'mine.desktop.app',
-    appIconPath: resolve(__dirname, '../assets/favicon.ico'),
+    appIconPath: resolve(import.meta.dirname, '../assets/logo.ico'),
     appIconIndex: 0,
     relaunchDisplayName: 'MINE DESKTOP',
     relaunchCommand: `"${exePath}"`

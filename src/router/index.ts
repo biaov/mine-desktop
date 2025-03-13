@@ -1,5 +1,5 @@
-import { createRouter, createWebHashHistory, Router } from 'vue-router'
-import type { RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import type { Router, RouteRecordRaw } from 'vue-router'
 import routes from './routes'
 
 /**

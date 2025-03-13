@@ -28,6 +28,6 @@
       "~/*": ["./electron/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.vue", "electron/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.vue", "electron/**/*.ts", "types/**/*.d.ts"],
   "exclude": ["node_modules"]
 }

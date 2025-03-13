@@ -1,5 +1,3 @@
-import { ref, watch } from 'vue'
-import type { Ref } from 'vue'
 import { message } from 'ant-design-vue'
 import { useRenderer } from '@/composables/useBridge'
 import { randomColors, randomColor, randomId } from '@/utils/function'

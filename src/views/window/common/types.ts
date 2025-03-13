@@ -8,6 +8,7 @@ export interface ListItem {
   value: string
   icon?: string
   antIcon?: string
+  tips?: string
   action?: () => void
 }
 

@@ -4,6 +4,9 @@ import { resolve } from 'path'
 import electron from 'vite-plugin-electron/simple'
 import vue from '@vitejs/plugin-vue'
 import eslint from 'vite-plugin-eslint'
+import tailwindcss from '@tailwindcss/vite'
+import autoImport from 'unplugin-auto-import/vite'
+import components from 'unplugin-vue-components/vite'
 
 const sameViteConfig: InlineConfig = {
   resolve: {
@@ -11,15 +14,20 @@ const sameViteConfig: InlineConfig = {
      * 路径别名
      */
     alias: {
-      '@': resolve(__dirname, './src'),
-      '~': resolve(__dirname, './electron')
+      '@': resolve(import.meta.dirname, './src'),
+      '~': resolve(import.meta.dirname, './electron')
     }
   }
 }
 
 const electronBuild: InlineConfig = {
   build: {
-    outDir: 'dist/resources/electron'
+    outDir: 'dist/resources/electron',
+    rollupOptions: {
+      output: {
+        entryFileNames: '[name].js'
+      }
+    }
   }
 }
 
@@ -27,10 +35,11 @@ export default defineConfig({
   ...sameViteConfig,
   base: './',
   plugins: [
-    eslint({
+    tailwindcss(),
+    /* eslint({
       lintOnStart: true,
       exclude: ['node_modules']
-    }),
+    }), */
     vue(),
     electron({
       main: {
@@ -41,11 +50,18 @@ export default defineConfig({
         }
       },
       preload: {
-        input: resolve(__dirname, 'electron/preload.ts'),
+        input: resolve(import.meta.dirname, 'electron/preload.ts'),
         vite: electronBuild
       },
       renderer: {}
-    })
+    }),
+    autoImport({
+      imports: ['vue', { vue: ['createApp', 'createVNode'] }, 'vue-router'],
+      dirs: ['./src/composables'],
+      dts: './types/auto-imports.d.ts',
+      eslintrc: { enabled: true, filepath: './types/.eslintrc-auto-import.json', globalsPropValue: true }
+    }),
+    components({ extensions: ['vue'], include: [/\.vue$/, /\.vue\?vue/], exclude: [/node_modules/, 'types.ts'], dts: './types/components.d.ts' })
   ],
   css: {
     /**
@@ -54,7 +70,7 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,
-        additionalData: `@import '@/styles/variables.less';`
+        additionalData: `@import '@/styles/vars.less';`
       }
     }
   },

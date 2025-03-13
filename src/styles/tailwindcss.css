@@ -1,0 +1,7 @@
+@import 'tailwindcss/preflight';
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
+
+@theme {
+  --spacing: 1px;
+}

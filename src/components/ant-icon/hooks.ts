@@ -1,4 +1,3 @@
-import { createVNode, computed } from 'vue'
 import * as icons from '@ant-design/icons-vue'
 import type { Props } from './types'
 

@@ -1,13 +1,6 @@
 .side-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2;
   width: var(--sidebar-width);
-  height: 100vh;
-  padding: 50px 0;
   background: @color-white;
-  user-select: none;
 
   &::-webkit-scrollbar {
     width: 0;
@@ -28,19 +21,10 @@
   }
 
   .menu-fold {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
     width: var(--sidebar-width);
-    height: 60px;
     transition: width 200ms;
 
     .icon {
-      width: 80px;
-      text-align: center;
-      font-size: 20px;
       cursor: pointer;
 
       &:hover {

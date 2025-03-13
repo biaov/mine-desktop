@@ -1,4 +1,4 @@
-import { IpcMain, BrowserWindow, IpcMainInvokeEvent } from 'electron'
+import type { BrowserWindow, IpcMainInvokeEvent } from 'electron'
 
 /**
  * handleChannels item
@@ -9,9 +9,9 @@ export interface HandleChannelItem {
 }
 
 /**
- * IpcMain
+ * IpcMain key
  */
-export type CurIpcMain = Record<string, unknown> & IpcMain
+export type IpcMainKey = 'handle' | 'on'
 
 /**
  * aboutAction Return
@@ -24,7 +24,8 @@ export interface AboutActionReturn {
 /**
  * 返回函数
  */
-export type FnReturn<T = unknown> = (...arg: T[]) => T
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type FnReturn<T = any> = (...arg: T[]) => T
 
 /**
  * 参数

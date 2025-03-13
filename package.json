@@ -1,8 +1,9 @@
 {
   "name": "mine-desktop",
   "private": false,
-  "version": "1.3.0",
+  "version": "1.3.1",
   "main": "dist/resources/electron/main.js",
+  "type": "module",
   "author": {
     "name": "biaov",
     "email": "biaov@qq.com",
@@ -14,11 +15,10 @@
     "dev": "chcp 65001 && vite",
     "build": "vite build && electron-builder -c build/electron-builder.json",
     "preview": "vite preview",
-    "lint": "eslint ./",
-    "ncu": "ncu --configFileName .ncurc.json && npm i"
+    "lint": "eslint ./"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "keywords": [
     "桌面软件",
@@ -44,31 +44,36 @@
   ],
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
-    "ant-design-vue": "^4.2.3",
-    "axios": "^1.7.4",
+    "ant-design-vue": "^4.2.6",
+    "axios": "^1.8.2",
     "dayjs": "^1.11.13",
-    "electron-log": "^5.1.7",
-    "electron-updater": "^6.2.1",
-    "vue": "^3.4.38",
-    "vue-router": "^4.4.3"
+    "electron-log": "^5.3.2",
+    "electron-updater": "^6.3.9",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.9.0",
-    "@types/node": "^22.5.0",
-    "@vitejs/plugin-vue": "^5.1.2",
-    "electron": "^28.2.6",
-    "electron-builder": "^24.13.3",
-    "eslint": "^9.9.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-vue": "^9.27.0",
-    "globals": "^15.9.0",
-    "less": "^4.2.0",
-    "prettier": "^3.3.3",
-    "typescript": "^5.5.4",
-    "typescript-eslint": "^8.2.0",
-    "vite": "^5.4.2",
-    "vite-plugin-electron": "^0.28.2",
-    "vite-plugin-electron-renderer": "^0.14.5",
+    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.22.0",
+    "@tailwindcss/vite": "^4.0.13",
+    "@types/node": "^22.13.10",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "electron": "^35.0.1",
+    "electron-builder": "^25.1.8",
+    "eslint": "^9.22.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-vue": "^9.32.0",
+    "globals": "^16.0.0",
+    "less": "^4.2.2",
+    "prettier": "^3.5.3",
+    "tailwindcss": "^4.0.13",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.1",
+    "unplugin-auto-import": "^19.1.1",
+    "unplugin-vue-components": "^28.4.1",
+    "vite": "^5.4.4",
+    "vite-plugin-electron": "^0.29.0",
+    "vite-plugin-electron-renderer": "^0.14.6",
     "vite-plugin-eslint": "^1.8.1"
   }
 }

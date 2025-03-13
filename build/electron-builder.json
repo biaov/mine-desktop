@@ -23,8 +23,7 @@
       }
     ],
     "artifactName": "${productName}-windows-${version}-installer.${ext}",
-    "verifyUpdateCodeSignature": false,
-    "publisherName": "biaov"
+    "verifyUpdateCodeSignature": false
   },
   "nsis": {
     "allowElevation": true,
@@ -59,5 +58,6 @@
       "updaterCacheDirName": ".updater"
     }
   ],
-  "beforePack": "build/before-pack.js"
+  "beforePack": "build/before-pack.cjs",
+  "afterPack": "build/after-pack.cjs"
 }
